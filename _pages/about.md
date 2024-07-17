@@ -28,9 +28,6 @@ redirect_from:
 <li><em>DNA methylation age in paired tumor and adjacent normal breast tissue in Chinese women with breast cancer</em> published in Clinical Epigenetics.</li>
 </ul>
 
-My research is at the intersection of genomics and computing, with a core emphasis on variant and copy number analysis, gene expression, microbiome, and proteomics studies. My current endeavors revolve around identifying genomic signatures and protein targets for drug discovery in movement disorders, particularly Dystonia and Parkinson’s Disease. My involvement extends to other significant initiatives, including disease modeling using Induced Pluripotent Stem Cells (iPSCs) for Lesch-Nyhan disease and DYT1 dystonia within the Hess-Jinnah Research Group. 
-
-As a Senior Bioinformatics Scientist and Bioinformatics manager, lead the Research Analysis Support Group of the Cancer Genomics Research Laboratory (CGR), operated by Leidos Biomedical Research, Inc. for the Division of Cancer Epidemiology and Genetics (DCEG), National Cancer Institute (NCI) (<a href="https://dceg2.cancer.gov/cgi-bin/Personnel.pl?1=ALL" target="_blank">DCEG Staff</a>). I obtained my Ph.D. in Computational Chemistry from the Hong Kong University of Science and Technology. My research is focused on analyzing genomic data (DNASeq and RNASeq) to gain knowledge in preventing human cancers and improving human health. My recent work focuses on analyses of whole transcriptomics, gene fusion, tumor-infiltrating immune cells, mutational signature, GWAS and polygenic risk score, spatial genomics, single-cell sequencing, and PacBio long reads sequencing.
 {% comment %}
 {% endcomment %}
 <b>2024  Publications</b>
