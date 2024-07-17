@@ -8,31 +8,50 @@ redirect_from:
   - /about.html
 ---
 {% comment %} {% endcomment %}
-My research is at the intersection of genomics and computing, with a core emphasis on variant and copy number analysis, gene expression, microbiome, and proteomics studies. My current endeavors revolve around identifying genomic signatures and protein targets for drug discovery in movement disorders, particularly Dystonia and Parkinson’s Disease. My involvement extends to other significant initiatives, including disease modeling using Induced Pluripotent Stem Cells (iPSCs) for Lesch-Nyhan disease and DYT1 dystonia within the Hess-Jinnah Research Group. 
-{% comment %}
-Beyond my primary focus, I am deeply interested in the application of Big Data analytics in medicine and healthcare. My expertise extends to real-time data processing, messaging, and streaming techniques.
 
-Feel free to explore more about my ongoing projects and interests on my website. Your questions and comments are most welcome, and I eagerly anticipate the opportunity for engaging discussions and potential collaborations. Looking forward to hearing from you!  
+
+<p>As a Senior Bioinformatics Scientist and Bioinformatics manager, lead the Research Analysis Support Group of the Cancer Genomics Research Laboratory (CGR), operated by Leidos Biomedical Research, Inc. for the Division of Cancer Epidemiology and Genetics (DCEG), National Cancer Institute (NCI) (<a href="https://dceg2.cancer.gov/cgi-bin/Personnel.pl?1=ALL" target="_blank">DCEG Staff</a>). I obtained my Ph.D. in Computational Chemistry from the Hong Kong University of Science and Technology. My research is focused on analyzing genomic data (DNASeq and RNASeq) to gain knowledge in preventing human cancers and improving human health. My recent work focuses on analyses of whole transcriptomics, gene fusion, tumor-infiltrating immune cells, mutational signature, GWAS and polygenic risk score, spatial genomics, single-cell sequencing, and PacBio long reads sequencing.</p>
+
+<p><b>NEWS</b></p>
+
+<p>2024</p>
+<ul>
+<li><em>An ancient ecospecies of Helicobacter pylori found in Indigenous populations and animal adapted lineages</em> published in Nature.</li>
+<li><em>Gene content, phage cycle regulation model and prophage inactivation disclosed by prophage genomics in the Helicobacter pylori Genome Project</em> published in Gut Microbes.</li>
+<li><em>Genomic profiles and clinical presentation of chordoma</em> published in Acta Neuropathologica Communications.</li>
+<li><em>GrafGen: Distance-Based Inference of Population Ancestry for Helicobacter pylori Genomes</em> published in Bioconductor.</li>
+<li><em>Pan-cancer mutational signature analysis of 111,711 targeted sequenced tumors using SATS</em> Under Review in Nature Methods.</li>
+</ul>
+
+<p>2023</p>
+<ul>
+<li><em>DNA methylation age in paired tumor and adjacent normal breast tissue in Chinese women with breast cancer</em> published in Clinical Epigenetics.</li>
+</ul>
+
+My research is at the intersection of genomics and computing, with a core emphasis on variant and copy number analysis, gene expression, microbiome, and proteomics studies. My current endeavors revolve around identifying genomic signatures and protein targets for drug discovery in movement disorders, particularly Dystonia and Parkinson’s Disease. My involvement extends to other significant initiatives, including disease modeling using Induced Pluripotent Stem Cells (iPSCs) for Lesch-Nyhan disease and DYT1 dystonia within the Hess-Jinnah Research Group. 
+
+As a Senior Bioinformatics Scientist and Bioinformatics manager, lead the Research Analysis Support Group of the Cancer Genomics Research Laboratory (CGR), operated by Leidos Biomedical Research, Inc. for the Division of Cancer Epidemiology and Genetics (DCEG), National Cancer Institute (NCI) (<a href="https://dceg2.cancer.gov/cgi-bin/Personnel.pl?1=ALL" target="_blank">DCEG Staff</a>). I obtained my Ph.D. in Computational Chemistry from the Hong Kong University of Science and Technology. My research is focused on analyzing genomic data (DNASeq and RNASeq) to gain knowledge in preventing human cancers and improving human health. My recent work focuses on analyses of whole transcriptomics, gene fusion, tumor-infiltrating immune cells, mutational signature, GWAS and polygenic risk score, spatial genomics, single-cell sequencing, and PacBio long reads sequencing.
+{% comment %}
 {% endcomment %}
 <b>2024  Publications</b>
 <ul>
-<li><i style="color:DodgerBlue;">Annals of Neurology</i><br>  
-Blood-Based Proteomics for Adult-Onset Focal Dystonias.<br><em>(Published)</em> </li>
-<li><i style="color:DodgerBlue;">Journal of Clinical Investigation</i><br>
-Chronic SIV-Induced neuroinflammation disrupts CCR7+ CD4+ T cell immunosurveillance in the rhesus macaque brain.<br><em>(Published)</em></li>
-<li><i style="color:DodgerBlue;">Parkinsonism & Related Disorders</i><br>
-Exploration of potential immune mechanisms in cervical dystonia.<br><em>(Published)</em></li>
-<li><i style="color:DodgerBlue;">Movement Disorders</i><br>
-An Exploratory, Randomized, Double-Blind Clinical Trial of Dipraglurant for Blepharospasm.<br><em>(Published)</em></li>
+<li><i style="color:DodgerBlue;">Nature</i><br>  
+An ancient ecospecies of Helicobacter pylori found in Indigenous populations and animal adapted lineages.<br><em>(Accepted)</em> </li>
+<li><i style="color:DodgerBlue;">Gut Microbes</i><br>
+Gene content, phage cycle regulation model and prophage inactivation disclosed by prophage genomics in the Helicobacter pylori Genome Project.<br><em>(Accepted)</em></li>
+<li><i style="color:DodgerBlue;">Acta Neuropathologica Communications</i><br>
+Genomic profiles and clinical presentation of chordoma.<br><em>(Accepted)</em></li>
+<li><i style="color:DodgerBlue;">Bioconductor</i><br>
+GrafGen: Distance-Based Inference of Population Ancestry for Helicobacter pylori Genomes.<br><em>(Published)</em></li>
+<li><i style="color:DodgerBlue;">Nature Methods</i><br>
+Pan-cancer mutational signature analysis of 111,711 targeted sequenced tumors using SATS.<br><em>(Under review)</em></li>
 </ul>  
 
 {% comment%}
-I have migrated most of my content to my new website: [https://sys4seq.com](https://sys4seq.com).  
-
-Previously, at Emory Vaccine Center, I worked in [Human Immunology Project Consortium](https://www.immuneprofiling.org/) projects with emphasis in understanding the effects of adjuvanted seasonal flu vaccination in healthy as well as in HIV-infected individuals. At University of Florida, I applied systems biology approaches to study the effects of recreational marijuana and/or tobacco use in HIV-infected young adults. At University of California San Diego, I worked for [LIPID MAPS](http://www.lipidmaps.org) and UCSD [Signaling Gateway consortium](http://www.signalinggateway.org/molecule/) projects.  
+Previously, I worked at Georgetown University Medican Center, LCB/NCI and University of Notre Dame (http://www.nd.edu).
 {% endcomment %}  
 
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js)
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RWM39QLMPF"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -41,6 +60,7 @@ Previously, at Emory Vaccine Center, I worked in [Human Immunology Project Conso
 
   gtag('config', 'G-RWM39QLMPF');
 </script>
+-->
 
 {% comment %}
 ![Lesch-Nyhan-Disease](/images/illustration1.png)    
