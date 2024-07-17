@@ -1,7 +1,7 @@
 ---
 title: "Chronic SIV-induced neuroinflammation disrupts CCR7+CD4+ T cell immunosurveillance in the rhesus macaque brain."
 collection: publications
-permalink: /publication/2025-test
+permalink: /publication/2024-neuroinflammation
 excerpt: 'Infectious diseases & Inflammation'
 date: 2024-03-12
 tags:
