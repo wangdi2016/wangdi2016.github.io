@@ -72,16 +72,16 @@ social:
 
 
 # Analytics
-analytics:
-  provider               :  "google-universal" # false (default), "google", "google-universal", "custom"
-  google:
-    tracking_id          : "G-RWM39QLMPF"
+#analytics:
+#  provider               :  "google-universal" # false (default), "google", "google-universal", "custom"
+#  google:
+#    tracking_id          : "G-RWM39QLMPF"
 
 
 # Site Author
 author:
   name             : "Difei Wang"
-  avatar           : "profilex.png"
+  avatar           : "profile.png"
   bio              : "From Data to Knowledge"
   location         : "Rockville, MD"
   employer         :
