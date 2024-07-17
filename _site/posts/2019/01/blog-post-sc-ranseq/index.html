@@ -1,0 +1,974 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Single cell gene expression data analysis on Cluster (10X Genomics, Cell Ranger) - Ashok R. Dinasarapu Ph.D</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Ashok R. Dinasarapu Ph.D">
+<meta property="og:title" content="Single cell gene expression data analysis on Cluster (10X Genomics, Cell Ranger)">
+
+
+  <link rel="canonical" href="https://adinasarapu.github.io/posts/2019/01/blog-post-sc-ranseq/">
+  <meta property="og:url" content="https://adinasarapu.github.io/posts/2019/01/blog-post-sc-ranseq/">
+
+
+
+  <meta property="og:description" content="Updated on May 03, 2021">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2019-11-18T00:00:00-05:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Ashok R. Dinasarapu",
+      "url" : "https://adinasarapu.github.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://adinasarapu.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Ashok R. Dinasarapu Ph.D Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://adinasarapu.github.io/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="https://adinasarapu.github.io/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="https://adinasarapu.github.io/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="https://adinasarapu.github.io/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="https://adinasarapu.github.io/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="https://adinasarapu.github.io/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="https://adinasarapu.github.io/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="https://adinasarapu.github.io/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="https://adinasarapu.github.io/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="https://adinasarapu.github.io/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="https://adinasarapu.github.io/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="https://adinasarapu.github.io/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="https://adinasarapu.github.io/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="https://adinasarapu.github.io/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="https://adinasarapu.github.io/assets/css/academicons.css"/>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://adinasarapu.github.io/">Ashok R. Dinasarapu Ph.D</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/teaching/">Teaching</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/portfolio/">Big Data</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/year-archive/">NGS | Proteomics</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/cv/">Résumé</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="https://adinasarapu.github.io/images/profile.png" class="author__avatar" alt="Scientist, Bioinformatics">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Scientist, Bioinformatics</h3>
+    <p class="author__bio">Bridging the gap between Genomics and Data Science</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Atlanta, GA</li>
+      
+      
+      
+      
+        <li><a href="mailto:ashok.reddy.dinasarapu@emory.edu"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+      
+      
+       
+        <li><a href="https://www.researchgate.net/profile/Ashok_Dinasarapu"><i class="fab fa-fw fa-researchgate" aria-hidden="true"></i> ResearchGate</a></li>
+      
+      
+        <li><a href="https://twitter.com/adinasarapu"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://www.linkedin.com/in/dareddy"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+      
+      
+      
+      
+      
+        <li><a href="https://bitbucket.org/adinasarapu"><i class="fab fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+      
+      
+        <li><a href="https://github.com/adinasarapu"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://scholar.google.com/citations?user=b6GBykAAAAAJ"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
+      
+      
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=dinasarapu+ashok+OR+D+ashok+reddy&sort=pubdate"><i class="ai ai-pubmed-square ai-fw"></i> PubMed</a></li>
+      
+      
+        <li><a href="http://orcid.org/0000-0002-1423-1518"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Single cell gene expression data analysis on Cluster (10X Genomics, Cell Ranger)">
+    <meta itemprop="description" content="Updated on May 03, 2021">
+    <meta itemprop="datePublished" content="November 18, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Single cell gene expression data analysis on Cluster (10X Genomics, Cell Ranger)
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2019-11-18T00:00:00-05:00">November 18, 2019</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p><em>Updated on May 03, 2021</em></p>
+
+<p><a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger">Cell Ranger</a> can be run in cluster mode, using job schedulers like Sun Grid Engine (or simply SGE) or Load Sharing Facility (or simply LSF) as queuing system allows highly parallelizable jobs.</p>
+
+<p>There are 4 steps to analyze Chromium Single Cell data<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.</p>
+
+<p><strong>Step 1</strong>: <code class="language-plaintext highlighter-rouge">cellranger mkfastq</code> demultiplexes raw base call (BCL) files generated by Illumina sequencers into FASTQ files.</p>
+
+<p><strong>Step 2</strong>: <code class="language-plaintext highlighter-rouge">cellranger count</code> takes FASTQ files from <code class="language-plaintext highlighter-rouge">cellranger mkfastq</code> and performs alignment, filtering, barcode counting, and unique molecular identifier (UMI) counting.</p>
+
+<p><em>When doing large studies involving multiple GEM wells, first run <code class="language-plaintext highlighter-rouge">cellranger count</code> on FASTQ data from each of the GEM wells individually, and then pool the results using <code class="language-plaintext highlighter-rouge">cellranger aggr</code>, as described <a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/aggregate">here</a></em>.</p>
+
+<p><strong>Step 3</strong>: <code class="language-plaintext highlighter-rouge">cellranger aggr</code> aggregates outputs from multiple runs of <code class="language-plaintext highlighter-rouge">cellranger count</code>.</p>
+
+<p><strong>Step 4</strong>: Use R package <a href="https://satijalab.org/seurat/">Seurat</a><sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> for downstream analysis.</p>
+
+<p>Running pipelines on cluster requires the following:</p>
+
+<p><strong>1</strong>. Download and uncompress <code class="language-plaintext highlighter-rouge">cellranger-6.0.1</code><sup id="fnref:1:1"><a href="#fn:1" class="footnote">1</a></sup> at your <code class="language-plaintext highlighter-rouge">$HOME</code> directory and add PATH in <code class="language-plaintext highlighter-rouge">~/.bashrc</code>.</p>
+
+<p><strong>2</strong>. Update job config file (<code class="language-plaintext highlighter-rouge">external/martian/jobmanagers/config.json</code>) for threads and memory. For example</p>
+
+<p><code class="language-plaintext highlighter-rouge">"threads_per_job": 4,</code><br />
+<code class="language-plaintext highlighter-rouge">"memGB_per_job": 32,</code></p>
+
+<p><strong>3</strong>. Update template file <code class="language-plaintext highlighter-rouge">sge.template</code> (<code class="language-plaintext highlighter-rouge">external/martian/jobmanagers/sge.template</code>).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+#$ -N __MRO_JOB_NAME__
+#$ -V
+#$ -pe smp __MRO_THREADS__
+#$ -q b.q
+#$ -cwd
+#$ -l mem_free=__MRO_MEM_GB__G
+#$ -o __MRO_STDOUT__
+#$ -e __MRO_STDERR__
+#$ -m abe
+#$ -M &lt;email&gt;
+#$ -S /bin/bash
+ 
+cd __MRO_JOB_WORKDIR__
+source $HOME/cellranger-6.0.1/sourceme.bash 
+</code></pre></div></div>
+
+<p>For clusters whose job managers do not support memory requests, it is possible to request memory 
+in the form of cores via the <code class="language-plaintext highlighter-rouge">--mempercore</code> command-line option. This option scales up the number 
+of threads requested via the <code class="language-plaintext highlighter-rouge">__MRO_THREADS__</code> variable according to how much memory a stage requires. 
+see more at <a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/advanced/cluster-mode">Cluster Mode</a></p>
+
+<p><strong>4</strong>. Download single cell gene expression and reference genome datasets from <a href="https://www.10xgenomics.com/resources/datasets/">10XGenomics</a>.</p>
+
+<p><strong>5</strong>. Create <code class="language-plaintext highlighter-rouge">sge.sh</code> file</p>
+
+<p><strong>for Single Cell 3′ gene expression</strong></p>
+
+<p>Output files will appear in the out/ subdirectory within this pipeline output directory. For pipeline output directory, the <code class="language-plaintext highlighter-rouge">--id</code> argument is used i.e 10XGTX_v3.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+
+cd $HOME/10xgenomics/out  
+
+FASTQS="$HOME/pbmc_10k_v3_fastqs"`  
+TR="$HOME/refdata-cellranger-GRCh38-3.0.0
+
+cellranger count --disable-ui \`  
+  --id=10XGTX_v3 \`  
+  --transcriptome=${TR} \`  
+  --fastqs=${FASTQS} \`  
+  --sample=pbmc_10k_v3 \`  
+  --expect-cells=10000 \`  
+  --jobmode=sge \`  
+  --mempercore=8 \`  
+  --jobinterval=5000 \`  
+  --maxjobs=3`  
+</code></pre></div></div>
+
+<p>Execute a command in screen and, detach and reconnect:</p>
+
+<p>Start a screen as <code class="language-plaintext highlighter-rouge">screen -S some_name</code>.<br />
+Run the above script as <code class="language-plaintext highlighter-rouge">sh sge.sh</code><br />
+To detach the screen session from the terminal use <code class="language-plaintext highlighter-rouge">control</code> + <code class="language-plaintext highlighter-rouge">a</code> followed by <code class="language-plaintext highlighter-rouge">d</code><br />
+To reconnect to the screen: <code class="language-plaintext highlighter-rouge">screen -R some_name</code></p>
+
+<p><strong>for Single Cell 5′ gene expression</strong></p>
+
+<p>Use either <code class="language-plaintext highlighter-rouge">--force-cells</code> or <code class="language-plaintext highlighter-rouge">--expect-cells</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash  
+
+cd $HOME/10xgenomics/out  
+
+TR="$HOME/refdata-cellranger-GRCh38-3.0.0
+FASTQS="$HOME/vdj_v1_hs_nsclc_5gex_fastqs"
+
+cellranger count \  
+  --id=10XGTX_v5 \  
+  --fastqs=${FASTQS} \  
+  --transcriptome=${TR} \  
+  --sample=vdj_v1_hs_nsclc_5gex \  
+  --force-cells=7802 \  
+  --jobmode=sge \  
+  --mempercore=8 \  
+  --maxjobs=3 \  
+  --jobinterval=2000  
+</code></pre></div></div>
+
+<p>Execute a command in screen and, detach and reconnect:</p>
+
+<p>Start a screen as <code class="language-plaintext highlighter-rouge">screen -S some_name</code>.<br />
+Run the above script as <code class="language-plaintext highlighter-rouge">sh sge.sh</code><br />
+To detach the screen session from the terminal use <code class="language-plaintext highlighter-rouge">control</code> + <code class="language-plaintext highlighter-rouge">a</code> followed by <code class="language-plaintext highlighter-rouge">d</code><br />
+To reconnect to the screen: <code class="language-plaintext highlighter-rouge">screen -R some_name</code></p>
+
+<p><strong>for Feature Barcode Analysis</strong></p>
+
+<p>Tested on Single Cell 5′ gene expression and cell surface protein (Feature Barcoding/Antibody Capture Assay) data.</p>
+
+<p>For more information, please visit the <a href="https://support.10xgenomics.com/single-cell-gene-expression/overview/doc/getting-started-single-cell-gene-expression-with-feature-barcoding-technology">Single Cell Gene Expression with Feature Barcoding</a> page (Single Cell 3’) or the <a href="https://support.10xgenomics.com/single-cell-vdj/overview/doc/getting-started-immune-profiling-feature-barcoding">Single Cell Immune Profiling with Feature Barcoding</a> page (Single Cell 5’).</p>
+
+<p>Currently available Feature Barcode kits for Single Cell Gene Expression Feature Barcode Technology</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>10x Solution</th>
+      <th>Gene Expression</th>
+      <th>Cell Surface Protein</th>
+      <th>CRISPR Screening</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Single Cell Gene Expression v2</td>
+      <td>✓</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Single Cell Gene Expression v3</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>Single Cell Gene Expression v3.1</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>Single Cell Gene Expression v3.1 (Dual Index)</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Currently available Feature Barcoding kits for Single Cell Immune Profiling Feature Barcoding Technology</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>10x Solution</th>
+      <th>TCR/Ig</th>
+      <th>Gene Expression</th>
+      <th>Cell Surface Marker</th>
+      <th>TCR-Antigen Specificity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Single Cell Immune Profiling</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Single Cell Immune Profiling with Feature Barcoding technology</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To enable Feature Barcode analysis, <code class="language-plaintext highlighter-rouge">cellranger count</code> needs two inputs:</p>
+
+<p>First you need a csv file declaring input library data sources; one for the normal single-cell gene expression reads, and one for the Feature Barcode reads (the FASTQ file directory and library type for each input dataset).</p>
+
+<p><code class="language-plaintext highlighter-rouge">LIBRARY=$HOME/vdj_v1_hs_pbmc2_5gex_protein_fastqs/vdj_v1_hs_pbmc2_5gex_protein_library.csv</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>fastqs</th>
+      <th>sample</th>
+      <th>library_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/path/to/antibody_fastqs</td>
+      <td>vdj_v1_hs_pbmc2_antibody</td>
+      <td>Antibody Capture</td>
+    </tr>
+    <tr>
+      <td>/path/to/gene_expression_fastqs</td>
+      <td>vdj_v1_hs_pbmc2_5gex</td>
+      <td>Gene Expression</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Second, you need Feature reference csv file, declaring feature-barcode constructs and associated barcodes. The pattern will be used to extract the Feature Barcode sequence from the read sequence.</p>
+
+<p><code class="language-plaintext highlighter-rouge">FEATURE_REF=$HOME/vdj_v1_hs_pbmc2_5gex_protein_fastqs/vdj_v1_hs_pbmc2_5gex_protein_feature_ref.csv</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>read</th>
+      <th>pattern</th>
+      <th>sequence</th>
+      <th>feature_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CD3</td>
+      <td>CD3_TotalSeqC</td>
+      <td>R2</td>
+      <td>5PNNNNNNNNNN(BC)NNNNNNNNN</td>
+      <td>CTCATTGTAACTCCT</td>
+      <td>Antibody Capture</td>
+    </tr>
+    <tr>
+      <td>CD19</td>
+      <td>CD19_TotalSeqC</td>
+      <td>R2</td>
+      <td>5PNNNNNNNNNN(BC)NNNNNNNNN</td>
+      <td>CTGGGCAATTACTCG</td>
+      <td>Antibody Capture</td>
+    </tr>
+    <tr>
+      <td>CD45RA</td>
+      <td>CD45RA_TotalSeqC</td>
+      <td>R2</td>
+      <td>5PNNNNNNNNNN(BC)NNNNNNNNN</td>
+      <td>TCAATCCTTCCGCTT</td>
+      <td>Antibody Capture</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Feature and Library Types</em> - When inputting Feature Barcode data to Cell Ranger via the Libraries CSV File, you must declare the library_type of each library. Examples include <em>Antibody Capture</em>, <em>CRISPR Guide Capture</em> or <em>Custom</em>. If your assay scheme creates a library containing multiple library_types, for example if you’re using CRISPR Guide Capture and Antibody Capture features, you will need to run Cell Ranger multiple times, passing different library_type values in the Libraries CSV File. If Targeted Gene Expression data is analyzed in conjunction with CRISPR-based Feature Barcode data, there are additional requirements imposed for the Feature Reference CSV file.</p>
+
+<p><a href="https://www.biolegend.com/en-us/totalseq">TotalSeq™ Reagents for Single-Cell Proteogenomics</a></p>
+
+<p><a href="https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_protein_v3/pbmc_1k_protein_v3_feature_ref.csv">TotalSeq™-B</a> is a line of antibody-oligonucleotide conjugates supplied by BioLegend that are compatible with the Single Cell 3’ v3 assay.<br />
+<a href="https://support.10xgenomics.com/csv/vdj_v1_hs_pbmc2_5gex_protein_feature_ref.csv">TotalSeq™-C</a> is a line of antibody-oligonucleotide conjugates supplied by BioLegend that are compatible with the Single Cell 5’ assay.<br />
+<a href="https://support.10xgenomics.com/csv/TotalSeqA_example_feature_ref.csv">TotalSeq™-A</a> is a line of antibody-oligonucleotide conjugates supplied by BioLegend that are compatible with the Single Cell 3’ v2 and Single Cell 3’ v3 kits. Although TotalSeq™-A can be used with the CITE-Seq assay, CITE-Seq is not a 10x supported assay.</p>
+
+<p>CITE-seq (Cellular Indexing of Transcriptomes and Epitopes by Sequencing) allows simultaneous analysis of transcriptome and cell surface protein information at the level of a single cell.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<p><em>“The pipeline first extracts and corrects the cell barcode and UMI from the feature library using the same methods as gene expression read processing. It then matches the Feature Barcode read against the list of features declared in the above <a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/feature-bc-analysis#feature-ref">Feature Barcode Reference</a>. The counts for each feature are available in the feature-barcode matrix output files.”</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash  
+
+cd $HOME/10xgenomics/out
+
+TR="$HOME/refdata-cellranger-GRCh38-3.0.0
+
+LIBRARY=$HOME/vdj_v1_hs_pbmc2_5gex_protein_fastqs/vdj_v1_hs_pbmc2_5gex_protein_library.csv  
+FEATURE_REF=$HOME/vdj_v1_hs_pbmc2_5gex_protein_fastqs/vdj_v1_hs_pbmc2_5gex_protein_feature_ref.csv  
+
+cellranger count \  
+ --libraries=${LIBRARY} \  
+ --feature-ref=${FEATURE_REF} \  
+ --id=PBMC_5GEX \  
+ --transcriptome=${TR} \  
+ --expect-cells=9000 \  
+ --jobmode=sge \  
+ --mempercore=8 \  
+ --maxjobs=3 \  
+ --jobinterval=5000  
+</code></pre></div></div>
+
+<p>Execute a command in screen and, detach and reconnect:</p>
+
+<p>Start a screen as <code class="language-plaintext highlighter-rouge">screen -S some_name</code>.<br />
+Run the above script as <code class="language-plaintext highlighter-rouge">sh sge.sh</code>.<br />
+To detach the screen session from the terminal use <code class="language-plaintext highlighter-rouge">control</code> + <code class="language-plaintext highlighter-rouge">a</code> followed by <code class="language-plaintext highlighter-rouge">d</code><br />
+To reconnect to the screen: <code class="language-plaintext highlighter-rouge">screen -R some_name</code></p>
+
+<p><strong>6</strong>. Monitor work progress through a web browser</p>
+
+<p>Open <code class="language-plaintext highlighter-rouge">_log</code> file present in output folder <code class="language-plaintext highlighter-rouge">PBMC_5GEX</code></p>
+
+<p>If you see serving UI as <code class="language-plaintext highlighter-rouge">http://cluster.university.edu:3600?auth=rlSdT_QLzQ9O7fxEo-INTj1nQManinD21RzTAzkDVJ8</code>, then type the following from your laptop</p>
+
+<p><code class="language-plaintext highlighter-rouge">ssh -NT -L 9000:cluster.university.edu:3600 user@cluster.university.edu</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">user@cluster.university.edu's password:</code></p>
+
+<p>Then access the UI using the following URL in your web browser
+<code class="language-plaintext highlighter-rouge">http://localhost:9000/</code></p>
+
+<p><strong>7</strong>. Single Cell Integration in Seurat</p>
+
+<p>Seurat is an R package designed for QC, analysis, and exploration of single cell RNA-seq data. Seurat aims to enable users to identify and interpret sources of heterogeneity from single cell transcriptomic measurements, and to integrate diverse types of single cell data. Seurat starts by reading cellranger data (barcodes.tsv.gz, features.tsv.gz and matrix.mtx.gz)</p>
+
+<p><code class="language-plaintext highlighter-rouge">pbmc.data &lt;- Read10X(data.dir = "~/PBMC_5GEX/outs/filtered_feature_bc_matrix/")</code></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="https://support.10xgenomics.com/single-cell-gene-expression/software/overview/welcome">10XGenomics</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://satijalab.org/seurat/">Seurat</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Stoeckius, M. et al. Simultaneous epitope and transcriptome measurement in single cells. Nat. Methods 14, 865–868 (2017). <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#10xgenomics" class="page__taxonomy-item" rel="tag">10XGenomics</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#cell-ranger" class="page__taxonomy-item" rel="tag">Cell Ranger</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#chromium-single-cell-gene-expression" class="page__taxonomy-item" rel="tag">Chromium Single Cell Gene Expression</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#cluster-computing" class="page__taxonomy-item" rel="tag">Cluster Computing</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#feature-barcoding" class="page__taxonomy-item" rel="tag">Feature Barcoding</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#seurat" class="page__taxonomy-item" rel="tag">Seurat</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#single-cell-rna-sequencing-scrna-seq" class="page__taxonomy-item" rel="tag">Single cell RNA-sequencing (scRNA-seq)</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#single-cell" class="page__taxonomy-item" rel="tag">Single Cell</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=https://adinasarapu.github.io/posts/2019/01/blog-post-sc-ranseq/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://adinasarapu.github.io/posts/2019/01/blog-post-sc-ranseq/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://adinasarapu.github.io/posts/2019/01/blog-post-sc-ranseq/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="https://adinasarapu.github.io/posts/2019/01/blog-post-qiime2/" class="pagination--pager" title="Taxonomic and diversity profiling of the microbiome - 16S rRNA gene amplicon sequence data
+">Previous</a>
+    
+    
+      <a href="https://adinasarapu.github.io/posts/2019/12/blog-post-atacseq/" class="pagination--pager" title="ATAC-seq peak calling with MACS2
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://adinasarapu.github.io/posts/2023/02/blog-post-somalogic-proteomics/" rel="permalink">Quantitative proteomics: aptamer-based quantitation of proteins
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  6 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2023-02-20T00:00:00-05:00">February 20, 2023</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>The aptamer-based <a href="https://somalogic.com">SomaScan®</a> assay is one of the popular methods of measuring abundances of protein targets. There is very little information on correlation between mass spectrometry (MS)-based proteomics, SOMAscan and Olink assays; Olink is another popular high throughput antibody-based platform. Some studies also reported a measurement variation between those platforms. In general aptamers/SOMAmers are selected against target proteins in their native conformation and in some cases against a functional protein with “known” post translational modifications (PTMs). It’s well known that novel PTMs (pathogen or disease-induced) can impact the protein structure, electrophilicity and interactions with proteins. The other main disadvantage is quantification which is based on DNA microarray chips (background noise). The main advantages are lower cost and data analysis.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://adinasarapu.github.io/posts/2022/10/blog-post-kaplan-meier-curve/" rel="permalink">Kaplan-Meier Curve using R
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  2 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-10-19T00:00:00-04:00">October 19, 2022</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Kaplan-Meier curve shows what the probability of an event (for example, survival) at a certain time interval. The log-rank test compares the survival curves of two or more groups. With a small subset of patients, the Kaplan-Meier estimates can be misleading and should be interpreted with caution.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://adinasarapu.github.io/posts/2021/04/blog-post-vep/" rel="permalink">Annotation of genetic variants
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  4 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2021-04-13T00:00:00-04:00">April 13, 2021</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Tools such as ANNOVAR, Variant Effect Predictor (VEP) or SnpEff annotate genetic variants (SNPs, INDELS, CNVs etc) present in VCF file. These tools integrate the annotations within the INFO column of the original VCF file.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://adinasarapu.github.io/posts/2020/01/blog-post-tmt/" rel="permalink">Quantitative proteomics: TMT-based quantitation of proteins
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  4 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2020-04-04T00:00:00-04:00">April 04, 2020</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Quantification of proteins using isobaric labeling (tandem mass tag or TMT) starts with the reduction of disulfide bonds in proteins with Dithiothreitol (DTT).</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<!--<a href="/cv/">Resume</a> -->
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/adinasarapu"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="http://bitbucket.org/adinasarapu"><i class="fab fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <!--<li><a href="https://adinasarapu.github.io/feed.xml">
+	<i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>-->
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Ashok R. Dinasarapu. 101 Woodruff Circle, Woodruff Memorial Research Building,  Room#6302, Emory University, Atlanta, GA 30322.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://adinasarapu.github.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'G-RWM39QLMPF', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

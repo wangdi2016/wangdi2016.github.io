@@ -1,0 +1,980 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Quantitative proteomics: aptamer-based quantitation of proteins - Ashok R. Dinasarapu Ph.D</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Ashok R. Dinasarapu Ph.D">
+<meta property="og:title" content="Quantitative proteomics: aptamer-based quantitation of proteins">
+
+
+  <link rel="canonical" href="https://adinasarapu.github.io/posts/2023/02/blog-post-somalogic-proteomics/">
+  <meta property="og:url" content="https://adinasarapu.github.io/posts/2023/02/blog-post-somalogic-proteomics/">
+
+
+
+  <meta property="og:description" content="The aptamer-based SomaScan® assay is one of the popular methods of measuring abundances of protein targets. There is very little information on correlation between mass spectrometry (MS)-based proteomics, SOMAscan and Olink assays; Olink is another popular high throughput antibody-based platform. Some studies also reported a measurement variation between those platforms. In general aptamers/SOMAmers are selected against target proteins in their native conformation and in some cases against a functional protein with “known” post translational modifications (PTMs). It’s well known that novel PTMs (pathogen or disease-induced) can impact the protein structure, electrophilicity and interactions with proteins. The other main disadvantage is quantification which is based on DNA microarray chips (background noise). The main advantages are lower cost and data analysis.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2023-02-20T00:00:00-05:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Ashok R. Dinasarapu",
+      "url" : "https://adinasarapu.github.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://adinasarapu.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Ashok R. Dinasarapu Ph.D Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://adinasarapu.github.io/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="https://adinasarapu.github.io/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="https://adinasarapu.github.io/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="https://adinasarapu.github.io/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="https://adinasarapu.github.io/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="https://adinasarapu.github.io/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="https://adinasarapu.github.io/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="https://adinasarapu.github.io/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="https://adinasarapu.github.io/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="https://adinasarapu.github.io/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="https://adinasarapu.github.io/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="https://adinasarapu.github.io/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="https://adinasarapu.github.io/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="https://adinasarapu.github.io/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="https://adinasarapu.github.io/assets/css/academicons.css"/>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://adinasarapu.github.io/">Ashok R. Dinasarapu Ph.D</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/teaching/">Teaching</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/portfolio/">Big Data</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/year-archive/">NGS | Proteomics</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/cv/">Résumé</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="https://adinasarapu.github.io/images/profile.png" class="author__avatar" alt="Scientist, Bioinformatics">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Scientist, Bioinformatics</h3>
+    <p class="author__bio">Bridging the gap between Genomics and Data Science</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Atlanta, GA</li>
+      
+      
+      
+      
+        <li><a href="mailto:ashok.reddy.dinasarapu@emory.edu"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+      
+      
+       
+        <li><a href="https://www.researchgate.net/profile/Ashok_Dinasarapu"><i class="fab fa-fw fa-researchgate" aria-hidden="true"></i> ResearchGate</a></li>
+      
+      
+        <li><a href="https://twitter.com/adinasarapu"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://www.linkedin.com/in/dareddy"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+      
+      
+      
+      
+      
+        <li><a href="https://bitbucket.org/adinasarapu"><i class="fab fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+      
+      
+        <li><a href="https://github.com/adinasarapu"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://scholar.google.com/citations?user=b6GBykAAAAAJ"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
+      
+      
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=dinasarapu+ashok+OR+D+ashok+reddy&sort=pubdate"><i class="ai ai-pubmed-square ai-fw"></i> PubMed</a></li>
+      
+      
+        <li><a href="http://orcid.org/0000-0002-1423-1518"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Quantitative proteomics: aptamer-based quantitation of proteins">
+    <meta itemprop="description" content="The aptamer-based SomaScan® assay is one of the popular methods of measuring abundances of protein targets. There is very little information on correlation between mass spectrometry (MS)-based proteomics, SOMAscan and Olink assays; Olink is another popular high throughput antibody-based platform. Some studies also reported a measurement variation between those platforms. In general aptamers/SOMAmers are selected against target proteins in their native conformation and in some cases against a functional protein with “known” post translational modifications (PTMs). It’s well known that novel PTMs (pathogen or disease-induced) can impact the protein structure, electrophilicity and interactions with proteins. The other main disadvantage is quantification which is based on DNA microarray chips (background noise). The main advantages are lower cost and data analysis.">
+    <meta itemprop="datePublished" content="February 20, 2023">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Quantitative proteomics: aptamer-based quantitation of proteins
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  5 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2023-02-20T00:00:00-05:00">February 20, 2023</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>The aptamer-based <a href="https://somalogic.com">SomaScan®</a> assay is one of the popular methods of measuring abundances of protein targets. There is very little information on correlation between mass spectrometry (MS)-based proteomics, SOMAscan and Olink assays; Olink is another popular high throughput antibody-based platform. Some studies also reported a measurement variation between those platforms. In general aptamers/SOMAmers are selected against target proteins in their native conformation and in some cases against a functional protein with “known” post translational modifications (PTMs). It’s well known that novel PTMs (pathogen or disease-induced) can impact the protein structure, electrophilicity and interactions with proteins. The other main disadvantage is quantification which is based on DNA microarray chips (background noise). The main advantages are lower cost and data analysis.</p>
+
+<p><strong>Table 1</strong>. Overview of common proteomic platforms (Jiang W et al, Cancers, 2022).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Analytical Technique</th>
+      <th>Category</th>
+      <th>Protein Sample Values</th>
+      <th>Accepted Biospecimen Types</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Proximity Extension Assay (Olink)</td>
+      <td>Antibody</td>
+      <td>1 µL</td>
+      <td>Plasma, tissue/cell, synovial fluid, CSF, plaque extract, and saliva</td>
+    </tr>
+    <tr>
+      <td>Reverse Phase Protein Arrays</td>
+      <td>Antibody</td>
+      <td>5 µg (1.0- 1.5 mg/mL protein)</td>
+      <td>Tissue/cell, plasma, serum, biopsies, body fluids</td>
+    </tr>
+    <tr>
+      <td>Bio-Plex</td>
+      <td>Antibody (bead)</td>
+      <td>12.5 µL (serum/plasma)</td>
+      <td>50 µL (cell culture)	Plasma, serum, tissue/cell</td>
+    </tr>
+    <tr>
+      <td>Simoa</td>
+      <td>Antibody (bead)</td>
+      <td>25 µL</td>
+      <td>Plasma, serum, urine, tissue/cell, CSF, saliva</td>
+    </tr>
+    <tr>
+      <td>Aptamer Group (Optmer)</td>
+      <td>Aptamer</td>
+      <td>38 µL</td>
+      <td>Plasma (diagnostics and therapeutics), urine, tissue/cell, liquid matrices</td>
+    </tr>
+    <tr>
+      <td>Base Pair Technologies</td>
+      <td>Aptamer</td>
+      <td>5–100 µL</td>
+      <td>Plasma, serum, tissue/cell</td>
+    </tr>
+    <tr>
+      <td>SOMAscan</td>
+      <td>Aptamer</td>
+      <td>55–100 µL</td>
+      <td>Plasma, serum, CSF, urine, cell/tissue, synovial fluid, exosomes</td>
+    </tr>
+    <tr>
+      <td>Electrochemiluminescence Immunoassay</td>
+      <td>ECLIA</td>
+      <td>50 µL</td>
+      <td>Plasma, serum, tissue/cell, CSF, urine, blood spots, tears, synovial fluid, tissue extracts</td>
+    </tr>
+    <tr>
+      <td>Multiplex ELISA</td>
+      <td>ELISA</td>
+      <td>25–50 µL</td>
+      <td>Plasma, serum, tissue/cell, urine, saliva, CSF</td>
+    </tr>
+    <tr>
+      <td>Singleplex ELISA</td>
+      <td>ELISA</td>
+      <td>100 µL</td>
+      <td>Plasma, serum, tissue/cell, urine, saliva, CSF</td>
+    </tr>
+    <tr>
+      <td>2D-PAGE</td>
+      <td>Gel electrophoresis</td>
+      <td>~100 µg (15–50 µL)</td>
+      <td>Plasma, serum, tissue/cell, urine</td>
+    </tr>
+    <tr>
+      <td>DDA-MS</td>
+      <td>MS</td>
+      <td>10 µL</td>
+      <td>Plasma, serum, tissue/cell</td>
+    </tr>
+    <tr>
+      <td>SWATH-MS</td>
+      <td>MS (DIA)</td>
+      <td>5–10 µg</td>
+      <td>Plasma, serum tissue/cell, platelets, monocytes/neutrophils</td>
+    </tr>
+    <tr>
+      <td>iTRAQ</td>
+      <td>MS (labeling in LC–MS–MS)</td>
+      <td>12 µg</td>
+      <td>Plasma, serum, tissue/cells, saliva</td>
+    </tr>
+    <tr>
+      <td>SRM/MRM</td>
+      <td>MS (LC–MS–MS)</td>
+      <td>15 µL</td>
+      <td>Plasma, tissue/cell, dried blood spots</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The SomaScan Assay v4.1 measures simultaneously ~6,600 unique human proteins in a single sample (see <strong>Table 2</strong>). Those protein targets were evaluated by ~7,300 aptamers called SOMAmers (Slow Off-rate Modified Aptamers). SOMAmers are short single-stranded DNA molecules, which are chemically modified to specifically bind to protein targets. The SOMAscan assay measures native proteins in complex matrices by transforming each individual protein concentration into a corresponding SOMAmer reagent concentration, which is then quantified using DNA microarrays. SOMAmer reagents are selected against proteins in their native folded conformations and are therefore generally found to require an intact, tertiary protein structure for binding.</p>
+
+<p><strong>Table 2</strong>. The 7k SomaScan Assay v4.1 panel (7,596 aptamers mapping to 6,414 unique human protein targets).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Organism</th>
+      <th>SOMAmers</th>
+      <th>UniProt IDs (all)</th>
+      <th>UniProt IDs (Unique)</th>
+      <th>Protein Targets</th>
+      <th>Gene IDs</th>
+      <th>Gene Symbols</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Human</td>
+      <td>7335</td>
+      <td>7301</td>
+      <td>6414</td>
+      <td>6610</td>
+      <td>6408</td>
+      <td>6398</td>
+    </tr>
+    <tr>
+      <td>Mouse</td>
+      <td>236</td>
+      <td>236</td>
+      <td>4</td>
+      <td>4</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>African clawed frog</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Gila monster</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Hornet</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Jellyfish</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Thermus thermophilus</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Common eastern firefly</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Bacillus stearothermophilus</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Ensifer meliloti</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>European elder</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>HIV-1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>HIV-2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Red alga</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>strain K12</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>Total</td>
+      <td>7596</td>
+      <td>7562</td>
+      <td>6431</td>
+      <td>6628</td>
+      <td>6415</td>
+      <td>6411</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>ADAT file</strong></p>
+
+<p>ADAT is a tab-delimited text file format. The contents include SOMAmer reagent intensities, sample data, sequence data and experimental metadata. For each SOMAmer reagent sequence, the ADAT file typically contains corresponding protein name, UniProt ID, Entrez Gene ID and Entrez Gene symbol.</p>
+
+<p><strong>SomaDataIO</strong></p>
+
+<p><a href="https://somalogic.github.io/SomaDataIO/index.html">SomaDataIO v5.3.1</a> is an R package for working with the SomaLogic ADAT file format.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>library(SomaDataIO)
+library(purrr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)  
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">read_adat()</code> function imports data from ADAT files.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>base.dir = "/Users/adinasa/Documents/"
+adat_file &lt;- "example.adat"
+my_adat &lt;- read_adat(paste0(base.dir,adat_file))  
+</code></pre></div></div>
+
+<p>Update the ADAT file with sample group information (adding sample group details from external file). Save the updated ADAT file (optional).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>meta_file = paste(base.dir, "MAPPING.csv", sep="/")  
+meta &lt;- read.csv(meta_file, header = T, stringsAsFactors = FALSE)  
+meta$SampleId &lt;- as.character(meta$SampleId)  
+my_adat &lt;- dplyr::left_join(my_adat,meta, by="SampleId", keep=FALSE)
+write_adat(my_adat, file = paste(base.dir, "example_updated.adat", sep="/"))  
+</code></pre></div></div>
+
+<p>Utility functions.</p>
+
+<p>regex for analytes</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>is_seq &lt;- function(.x) grepl("^seq\\.[0-9]{4}", .x)  
+</code></pre></div></div>
+
+<p>center/scale vector (z-scores).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cs &lt;- function(.x) {      out &lt;- .x - mean(.x)  
+  out / sd(out)       
+}
+</code></pre></div></div>
+
+<p>Data were log2-transformed within each sample. Control and Disease are two groups (this may vary in your data).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cleanData &lt;- my_adat %&gt;% 
+  filter(SampleType == "Sample") %&gt;% drop_na(Group) %&gt;% 
+  log2() %&gt;% 
+  mutate(SampleGroup = as.numeric(factor(Group, levels=c("Control", " Disease"))) - 1) %&gt;% 
+  modify_if(is_seq(names(.)), cs)
+</code></pre></div></div>
+
+<p>Human proteins with Uniprot ID and QC=PASS selected.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t_tests &lt;- getAnalyteInfo(cleanData2) %&gt;% 
+  filter(ColCheck == "PASS") %&gt;% 
+  filter(Organism == "Human") %&gt;%
+  filter(UniProt != "") %&gt;%
+  select(AptName, SeqId, Target = TargetFullName,Organism, EntrezGeneID, EntrezGeneSymbol, UniProt, ColCheck)
+</code></pre></div></div>
+
+<p>Performed a Student’s t-test.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t_tests &lt;- t_tests %&gt;% 
+  mutate(
+    formula = map(AptName, ~ as.formula(paste(.x, "~ SampleGroup"))), 
+    t_test  = map(formula, ~ stats::t.test(.x, data = cleanData,var.equal = TRUE)),  
+    t_stat  = map_dbl(t_test, "statistic"),            
+    p.value = map_dbl(t_test, "p.value"),              
+    fdr     = p.adjust(p.value, method = "BH")         
+  ) %&gt;% arrange(p.value)
+</code></pre></div></div>
+
+<p>The results were used to identify proteins significantly associated with disease using a Benjamini-Hochberg false discovery rate (FDR) threshold of 1%.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t_tests [t_tests$fdr &lt;= 0.1,]
+</code></pre></div></div>
+
+<p>Further reading … <br />
+<a href="https://adinasarapu.github.io/posts/2020/01/blog-post-tmt/">Tandem Mass Tag (TMT)-based quantitation of proteins</a><br />
+<a href="https://adinasarapu.github.io/posts/2018/04/blog-post-lfq/">Label-Free Quantitation (LFQ) of proteins</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#aptamer-based-proteomics" class="page__taxonomy-item" rel="tag">aptamer-based proteomics</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#emory-university" class="page__taxonomy-item" rel="tag">Emory University</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#ms-based-proteomics" class="page__taxonomy-item" rel="tag">MS-based Proteomics</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#olink-proteomics" class="page__taxonomy-item" rel="tag">Olink Proteomics</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#quantitative-proteomics" class="page__taxonomy-item" rel="tag">Quantitative Proteomics</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#somalogic" class="page__taxonomy-item" rel="tag">SOMALogic</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=https://adinasarapu.github.io/posts/2023/02/blog-post-somalogic-proteomics/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://adinasarapu.github.io/posts/2023/02/blog-post-somalogic-proteomics/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://adinasarapu.github.io/posts/2023/02/blog-post-somalogic-proteomics/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="https://adinasarapu.github.io/posts/2022/10/blog-post-kaplan-meier-curve/" class="pagination--pager" title="Kaplan-Meier Curve using R
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://adinasarapu.github.io/posts/2022/10/blog-post-kaplan-meier-curve/" rel="permalink">Kaplan-Meier Curve using R
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  2 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-10-19T00:00:00-04:00">October 19, 2022</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Kaplan-Meier curve shows what the probability of an event (for example, survival) at a certain time interval. The log-rank test compares the survival curves of two or more groups. With a small subset of patients, the Kaplan-Meier estimates can be misleading and should be interpreted with caution.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://adinasarapu.github.io/posts/2021/04/blog-post-vep/" rel="permalink">Annotation of genetic variants
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  4 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2021-04-13T00:00:00-04:00">April 13, 2021</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Tools such as ANNOVAR, Variant Effect Predictor (VEP) or SnpEff annotate genetic variants (SNPs, INDELS, CNVs etc) present in VCF file. These tools integrate the annotations within the INFO column of the original VCF file.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://adinasarapu.github.io/posts/2020/01/blog-post-tmt/" rel="permalink">Quantitative proteomics: TMT-based quantitation of proteins
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  4 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2020-04-04T00:00:00-04:00">April 04, 2020</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Quantification of proteins using isobaric labeling (tandem mass tag or TMT) starts with the reduction of disulfide bonds in proteins with Dithiothreitol (DTT).</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="https://adinasarapu.github.io/posts/2018/04/blog-post-lfq/" rel="permalink">Quantitative proteomics: label-free quantitation of proteins
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  6 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2020-04-04T00:00:00-04:00">April 04, 2020</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Updated on September 13, 2021</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<!--<a href="/cv/">Resume</a> -->
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/adinasarapu"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="http://bitbucket.org/adinasarapu"><i class="fab fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <!--<li><a href="https://adinasarapu.github.io/feed.xml">
+	<i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>-->
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Ashok R. Dinasarapu. 101 Woodruff Circle, Woodruff Memorial Research Building,  Room#6302, Emory University, Atlanta, GA 30322.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://adinasarapu.github.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'G-RWM39QLMPF', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

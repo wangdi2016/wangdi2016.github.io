@@ -1,0 +1,913 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Building a real-time big data pipeline (7: Spark MLlib, Regression, Java) - Ashok R. Dinasarapu Ph.D</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Ashok R. Dinasarapu Ph.D">
+<meta property="og:title" content="Building a real-time big data pipeline (7: Spark MLlib, Regression, Java)">
+
+
+  <link rel="canonical" href="https://adinasarapu.github.io/posts/2020/08/blog-post-spark-mllib/">
+  <meta property="og:url" content="https://adinasarapu.github.io/posts/2020/08/blog-post-spark-mllib/">
+
+
+
+  <meta property="og:description" content="Updated on October 02, 2020">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-08-24T00:00:00-04:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Ashok R. Dinasarapu",
+      "url" : "https://adinasarapu.github.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="https://adinasarapu.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Ashok R. Dinasarapu Ph.D Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://adinasarapu.github.io/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="https://adinasarapu.github.io/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="https://adinasarapu.github.io/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="https://adinasarapu.github.io/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="https://adinasarapu.github.io/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="https://adinasarapu.github.io/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="https://adinasarapu.github.io/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="https://adinasarapu.github.io/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="https://adinasarapu.github.io/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="https://adinasarapu.github.io/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="https://adinasarapu.github.io/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="https://adinasarapu.github.io/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="https://adinasarapu.github.io/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="https://adinasarapu.github.io/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="https://adinasarapu.github.io/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="https://adinasarapu.github.io/assets/css/academicons.css"/>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://adinasarapu.github.io/">Ashok R. Dinasarapu Ph.D</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/teaching/">Teaching</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/portfolio/">Big Data</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/year-archive/">NGS | Proteomics</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://adinasarapu.github.io/cv/">Résumé</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="https://adinasarapu.github.io/images/profile.png" class="author__avatar" alt="Scientist, Bioinformatics">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Scientist, Bioinformatics</h3>
+    <p class="author__bio">Bridging the gap between Genomics and Data Science</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Atlanta, GA</li>
+      
+      
+      
+      
+        <li><a href="mailto:ashok.reddy.dinasarapu@emory.edu"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+      
+      
+       
+        <li><a href="https://www.researchgate.net/profile/Ashok_Dinasarapu"><i class="fab fa-fw fa-researchgate" aria-hidden="true"></i> ResearchGate</a></li>
+      
+      
+        <li><a href="https://twitter.com/adinasarapu"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+        <li><a href="https://www.linkedin.com/in/dareddy"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+      
+      
+      
+      
+      
+        <li><a href="https://bitbucket.org/adinasarapu"><i class="fab fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+      
+      
+        <li><a href="https://github.com/adinasarapu"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://scholar.google.com/citations?user=b6GBykAAAAAJ"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
+      
+      
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=dinasarapu+ashok+OR+D+ashok+reddy&sort=pubdate"><i class="ai ai-pubmed-square ai-fw"></i> PubMed</a></li>
+      
+      
+        <li><a href="http://orcid.org/0000-0002-1423-1518"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Building a real-time big data pipeline (7: Spark MLlib, Regression, Java)">
+    <meta itemprop="description" content="Updated on October 02, 2020">
+    <meta itemprop="datePublished" content="August 24, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Building a real-time big data pipeline (7: Spark MLlib, Regression, Java)
+</h1>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2020-08-24T00:00:00-04:00">August 24, 2020</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p><em>Updated on October 02, 2020</em></p>
+
+<p>Apache Spark MLlib <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> <sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> is a distributed framework that provides many utilities useful for <strong>machine learning</strong> tasks, such as: Classification, Regression, Clustering, Dimentionality reduction and, Linear algebra, statistics and data handling</p>
+
+<h2 id="1-start-hadoophdfs">1. Start Hadoop/HDFS</h2>
+
+<p>The following command will start the namenode as well as the data nodes as cluster <sup id="fnref:3:1"><a href="#fn:3" class="footnote">3</a></sup>.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /Users/adinasa/bigdata/hadoop-3.2.1  
+$bash sbin/start-dfs.sh  
+</code></pre></div></div>
+
+<p>Create a directory</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$source ~/.bash_profile  
+$hadoop fs -mkdir -p /user/adinasarapu
+</code></pre></div></div>
+
+<p>Insert data into HDFS: Use <code class="language-plaintext highlighter-rouge">-copyFromLocal</code> command to move one or more files from local location to HDFS.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$hadoop fs -copyFromLocal *.csv /user/adinasarapu
+</code></pre></div></div>
+
+<p>Verify the files using <code class="language-plaintext highlighter-rouge">ls</code> command.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$hadoop fs -ls /user/adinasarapu  
+-rw-r--r--   1 adinasa supergroup     164762 2020-08-18 17:39 /user/adinasarapu/data_proteomics.csv  
+-rw-r--r--   1 adinasa supergroup        786 2020-08-18 17:39 /user/adinasarapu/samples_proteomics.csv  
+</code></pre></div></div>
+
+<p>Start YARN with the script: <code class="language-plaintext highlighter-rouge">start-yarn.sh</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$bash start-yarn.sh  
+Starting resourcemanager  
+Starting nodemanagers  
+</code></pre></div></div>
+
+<p>Check the list of Java processes running in your system by using the command <code class="language-plaintext highlighter-rouge">jps</code>. If you are able to see the Hadoop daemons running after executing the jps command, we can safely assume that the Hadoop cluster is running.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$jps  
+96899 NodeManager  
+91702 SecondaryNameNode  
+96790 ResourceManager  
+97240 Jps  
+91437 NameNode  
+91550 DataNode  
+</code></pre></div></div>
+
+<p>Open a web browser to see your configurations for the current session.</p>
+
+<p><em>Web UI</em><br />
+for HDFS: http://localhost:9870<br />
+for YARN Resource Manager: http://localhost:8088</p>
+
+<h2 id="2-the-scala-build-tool-sbt">2. The Scala Build Tool (SBT)</h2>
+
+<p>SBT is an interactive build tool for Scala, Java, and more. It requires Java 1.8 or later.</p>
+
+<p><a href="https://adinasarapu.github.io/posts/2020/08/blog-post-spark-sbt/">How to install, and create an initial set of files and directories for any SBT project</a></p>
+
+<p>Update the <code class="language-plaintext highlighter-rouge">build.sbt</code> file for Hadoop, Spark core and Spark Machine Learning libraries <sup id="fnref:1:1"><a href="#fn:1" class="footnote">1</a></sup> <sup id="fnref:2:1"><a href="#fn:2" class="footnote">2</a></sup> <sup id="fnref:3:2"><a href="#fn:3" class="footnote">3</a></sup> <sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> <sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>. Use Maven repository to get any <code class="language-plaintext highlighter-rouge">libraryDependencies</code>. See <a href="https://mvnrepository.com/artifact/org.apache.spark/spark-mllib">Spark Project ML Library</a> at Maven repository.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name := "MyProject"
+version := "1.0"
+
+// Scala version above 2.12.8 is necessary to prevent "Task not serializable: java.io.NotSerializableException ..."  
+scalaVersion := "2.12.12"
+
+// Create "JavaExampleMain.java" java main class in "src/main/java" directory with package name "com.test.rdd"  
+mainClass := Some("com.test.rdd.JavaExampleMain")  
+
+libraryDependencies += "org.apache.hadoop" % "hadoop-common" % "3.2.1";  
+libraryDependencies += "org.apache.hadoop" % "hadoop-hdfs-client" % "3.2.1";  
+libraryDependencies += "org.apache.spark" %% "spark-core" % "3.0.0";  
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.0.0";  
+libraryDependencies += "org.apache.spark" %% "spark-mllib" % "3.0.0"  
+</code></pre></div></div>
+
+<h2 id="3-java-application">3. Java application</h2>
+
+<p><code class="language-plaintext highlighter-rouge">GeneralizedLinearRegression</code> is a regression algorithm. There are two steps to successfully run this application.</p>
+
+<p>First to fit a Generalized Linear Model (GLM), use a symbolic description of the linear predictor (link function) and a description of the error distribution (family) from the following table.</p>
+
+<p>For example, <code class="language-plaintext highlighter-rouge">GeneralizedLinearRegression glr = new GeneralizedLinearRegression().setFamily("gaussian").setLink("identity")</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Family (Error distribution)</th>
+      <th>Link function (Linear predictor)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>gaussian</td>
+      <td>identity, log, inverse</td>
+    </tr>
+    <tr>
+      <td>binomial</td>
+      <td>logit, probit, cloglog</td>
+    </tr>
+    <tr>
+      <td>poisson</td>
+      <td>log, identity, sqrt</td>
+    </tr>
+    <tr>
+      <td>gamma</td>
+      <td>inverse, identity, log</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Second, relate your data column names to model parameters (label and features).<br />
+<code class="language-plaintext highlighter-rouge">label</code>: dependent variable in the model<br />
+<code class="language-plaintext highlighter-rouge">features</code> is a vector with independent variables in the model</p>
+
+<p>Create an empty java main class file named <code class="language-plaintext highlighter-rouge">JavaExampleMain.java</code> in the <code class="language-plaintext highlighter-rouge">src/main/java/com/ml/rdd</code> directory (compulsory).</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package com.ml.rdd;  
+
+public class JavaExampleMain {  
+  public static void main(String[] args) {}  
+}  
+</code></pre></div></div>
+
+<p>Create another empty java class file named <code class="language-plaintext highlighter-rouge">DatasetForML.java</code> in the <code class="language-plaintext highlighter-rouge">src/main/java/com/ml/rdd</code> directory (optional).</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package com.ml.rdd;  
+  
+public class DatasetForML {}  
+</code></pre></div></div>
+
+<p>Compile and run the project using SBT command <code class="language-plaintext highlighter-rouge">sbt run</code> in the directory where <code class="language-plaintext highlighter-rouge">build.sbt</code> file present.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adinasa@Ashoks-MacBook-Pro-2 proteomics % sbt run  
+[info] welcome to sbt 1.3.13 (Oracle Corporation Java 1.8.0_261)  
+[info] loading project definition from /Users/adinasa/Documents/bigdata/proteomics/project  
+[info] loading settings for project proteomics from built.sbt ...  
+[info] set current project to proteomics (in build file:/Users/adinasa/Documents/bigdata/proteomics/)  
+[info] Compiling 2 Java sources to /Users/adinasa/Documents/bigdata/proteomics/target/scala-2.12/classes ...  
+[info] running com.ml.rdd.JavaExampleMain   
+[success] Total time: 3 s, completed Oct 2, 2020 2:33:48 PM  
+</code></pre></div></div>
+
+<h2 id="4-code-compilation-and-results">4. Code compilation and results</h2>
+
+<p>To compile and run the project use either SBT (above), IntelliJ IDEA or Eclipse IDE</p>
+
+<p>For <code class="language-plaintext highlighter-rouge">SBT</code>, use <code class="language-plaintext highlighter-rouge">sbt run</code> command in the directory where <code class="language-plaintext highlighter-rouge">build.sbt</code> file is present.<br />
+For <a href="https://adinasarapu.github.io/posts/2020/08/blog-post-spark-sbt/">Eclipse IDE</a><br />
+For Intellij IDEA,<br />
+ a. Download and intall IntelliJ IDEA<br />
+ b. Add the Scala plugin (IntelliJ IDEA -&gt; Preferences -&gt; Plugins)<br />
+ c. Import an SBT project (From the <code class="language-plaintext highlighter-rouge">Welcome Screen</code> or <code class="language-plaintext highlighter-rouge">File</code> -&gt; Open; Browse to and select the top-level folder of your sbt project, and click OK)</p>
+
+<p><img src="/images/open_import.png" alt="Partitions" /></p>
+
+<p>After importing the above created simple SBT project into IntelliJ IDEA, update <code class="language-plaintext highlighter-rouge">JavaExampleMain.java</code> file</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package com.ml.rdd;  
+
+import static org.apache.spark.sql.functions.col;
+import static org.apache.spark.sql.functions.lit;
+import static org.apache.spark.sql.functions.when;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.apache.spark.ml.feature.VectorAssembler;
+import org.apache.spark.ml.regression.GeneralizedLinearRegression;
+import org.apache.spark.ml.regression.GeneralizedLinearRegressionModel;
+import org.apache.spark.ml.regression.GeneralizedLinearRegressionTrainingSummary;
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SparkSession;
+
+
+public class JavaExampleMain {
+
+    public static void main(String[] args) {
+
+        // Hadoop: get file-list from HDFS
+        URI uri = null;
+        try {
+            uri = new URI("hdfs://localhost:9000/user/adinasarapu");
+        } catch (URISyntaxException e1) {
+            e1.printStackTrace();
+        }
+        FileStatus[] fileStatus = filesFromHadoop(uri);
+
+        // The entry point to programming Spark with the Dataset and DataFrame API.
+        // The builder can also be used to create a new session
+        // If you didn't specify serialization in spark context you are using the default java serialization...
+        // Spark runs on YARN, in cluster mode. spark.serializer is set to org.apache.spark.serializer.KryoSerializer
+
+        SparkSession spark = SparkSession
+                .builder()
+                .master("local").appName("Java Spark SQL Example")
+                .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+                .getOrCreate();
+
+        // Pass fileStatus and spark context to DatasetForML and, create Dataset&lt;Row&gt; object
+        DatasetForML dataset = new DatasetForML();
+        dataset.setFileStatus(fileStatus);
+        dataset.setSpark(spark);
+        Dataset&lt;Row&gt; dataset2 = dataset.createDataSet();
+
+        GeneralizedLinearRegression glr = new GeneralizedLinearRegression()
+                .setFamily("gaussian")
+                .setLink("identity")
+                .setMaxIter(10)
+                .setRegParam(0.3)
+                .setLabelCol("label")
+                .setFeaturesCol("features");
+
+        // Fit the model
+        GeneralizedLinearRegressionModel model = glr.fit(dataset2);
+        // Print the coefficients and intercept for generalized linear regression model
+        GeneralizedLinearRegressionTrainingSummary summary = model.summary();
+        System.out.println(summary.toString());
+        spark.stop();
+    }
+
+    /**
+     * @param fileStatus
+     * @param spark
+     * @return
+     */
+
+    private static Dataset&lt;Row&gt; getDataSet(FileStatus[] fileStatus, SparkSession spark) {
+
+        String data_file = null;
+        String samples_file = null;
+
+        // Check if file exists at the given location
+        for (FileStatus status : fileStatus) {
+
+            //System.out.println(status.getPath().toString());
+            String file_name = status.getPath().toString();
+
+            File f = new File(file_name);
+
+            if (f.getName().startsWith("data_")) {
+                data_file = file_name;
+                System.out.println("data_file : " + data_file);
+            }
+            if (f.getName().startsWith("samples_")) {
+                samples_file = file_name;
+                System.out.println("samples_file : " + samples_file);
+            }
+        }
+
+
+        // sparkSession.read().option("header", true).option("inferSchema","true").csv("Book.csv");
+        // setting label and features.
+        //dataset = new StringIndexer().setInputCol("Disease").setOutputCol("SampleID").fit(dataset).transform(dataset);
+        //.format("libsvm")
+
+        Dataset&lt;Row&gt; df_sample = spark.read().option("inferSchema", "true").option("header", "true").csv(samples_file)
+                .withColumnRenamed("Disease", "label");
+
+        Dataset&lt;Row&gt; df_sample2 = df_sample.withColumn("label", when(col("label").isNotNull().
+                and(col("label").equalTo(lit("Yes"))), lit(1)).otherwise(lit(0)));
+
+        Dataset&lt;Row&gt; df_sample3 = df_sample2.select("SampleID", "label", "Age");
+
+        df_sample3.show();
+
+        df_sample3.printSchema();
+
+        // change Disease -&gt; label
+        // Yes or No -&gt; 1 or 0
+        // label column should be of numeric type. I think it should be 0 or 1 so your T or F should be mapped appropriately.
+        // creates a new column features
+
+        String[] myStrings = {"label", "Age"};
+
+        // After VectorAssembler you have to have a training dataset with label and features columns.
+        // https://spark.apache.org/docs/latest/ml-features#vectorassembler
+        VectorAssembler VA = new VectorAssembler().setInputCols(myStrings).setOutputCol("features");
+        Dataset&lt;Row&gt; dataset = VA.transform(df_sample3);
+
+        return dataset;
+    }
+
+    /**
+     * @return
+     * @throws URISyntaxException
+     * @throws IOException
+     * @throws FileNotFoundException
+     * @param uri
+     */
+    private static FileStatus[] filesFromHadoop(URI uri) {
+
+        // Message levels lower than passed log level value will be discarded by the logger.
+        Logger rootLogger = LogManager.getRootLogger();
+        rootLogger.setLevel(Level.WARN);
+
+        // conf: Configuration that contains the classpath setting
+        Configuration conf = new Configuration();
+
+        FileSystem fs = null;
+        try {
+            fs = FileSystem.get(uri, conf);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FileStatus[] fileStatus = null;
+        try {
+            fileStatus = fs.listStatus(new Path(uri));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileStatus;
+    }
+}
+</code></pre></div></div>
+
+<p>Also, update <code class="language-plaintext highlighter-rouge">DatasetForML.java</code> file</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package com.ml.rdd;
+
+import static org.apache.spark.sql.functions.col;
+import static org.apache.spark.sql.functions.lit;
+import static org.apache.spark.sql.functions.when;
+
+import java.io.File;
+
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.spark.ml.feature.VectorAssembler;
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SparkSession;
+
+public class DatasetForML {
+
+    private static final long serialVersionUID = 1L;
+
+    FileStatus[] fileStatus = null;
+    SparkSession spark = null;
+
+    public DatasetForML() { }
+
+    public FileStatus[] getFileStatus() {
+        return fileStatus;
+    }
+
+    public void setFileStatus(FileStatus[] fileStatus) {
+        this.fileStatus = fileStatus;
+    }
+
+    public SparkSession getSpark() {
+        return spark;
+    }
+
+    public void setSpark(SparkSession spark) {
+        this.spark = spark;
+    }
+
+    public Dataset&lt;Row&gt; createDataSet() {
+
+        Dataset&lt;Row&gt; dataset = null;
+
+        String data_file = null;
+        String samples_file = null;
+
+        // Check if file exists at the given location
+        for (FileStatus status : fileStatus) {
+
+            //System.out.println(status.getPath().toString());
+            String file_name = status.getPath().toString();
+            File f = new File(file_name);
+            if (f.getName().startsWith("data_")) {
+                data_file = file_name;
+                System.out.println("data_file : " + data_file);
+            }
+            if (f.getName().startsWith("samples_")) {
+                samples_file = file_name;
+                System.out.println("samples_file : " + samples_file);
+            }
+        }
+
+        // Read samples file as Dataset
+        // Replace column name Disease with label
+        Dataset&lt;Row&gt; df_sample = spark.read()
+                .option("inferSchema", "true")
+                .option("header", "true")
+                .csv(samples_file)
+                .withColumnRenamed("Disease", "label");
+
+        // Replace Yes or NO with 1 or 0
+        Dataset&lt;Row&gt; df_sample2 = df_sample
+                .withColumn("label", when(col("label").isNotNull()
+                        .and(col("label").equalTo(lit("Yes"))), lit(1)).otherwise(lit(0)))
+                .withColumn("Genetic",when(col("Genetic").isNotNull()
+                        .and(col("Genetic").equalTo(lit("Yes"))),lit(1)).otherwise(lit(0)));
+
+        // Subset Dataset
+        Dataset&lt;Row&gt; df_sample3 = df_sample2.select("SampleID", "label", "Genetic","Age");
+        df_sample3.show();
+        df_sample3.printSchema();
+        // VectorAssembler is a transformer that combines a given list of columns into a single vector column
+        // We want to combine Genetic and Age into a single feature vector called features and use it to predict label (Disease) or not.
+        String[] myStrings = {"Genetic", "Age"};
+        VectorAssembler VA = new VectorAssembler().setInputCols(myStrings).setOutputCol("features");
+        dataset = VA.transform(df_sample3);
+        dataset.show();
+        return dataset;
+    }
+}
+</code></pre></div></div>
+
+<p>Go to the Run menu and select the Run option.</p>
+
+<p>Results</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Coefficients:  
+	Feature     Estimate  Std Error T Value	P Value  
+	(Intercept) 0.0408    0.3501	0.1165	0.9081  
+	Genetic     0.2797    0.1278	2.1878	0.0375  
+	Age   	    0.0085    0.0055	1.5454	0.1339  
+
+(Dispersion parameter for gaussian family taken to be 0.1753)  
+	Null deviance: 6.6667 on 27 degrees of freedom  
+	Residual deviance: 4.7321 on 27 degrees of freedom  
+AIC: 37.7313  
+</code></pre></div></div>
+
+<p>Finally, shutting down the HDFS<br />
+You can stop all the daemons using the command <code class="language-plaintext highlighter-rouge">stop-all.sh</code>. You can also start or stop each daemon separately.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$bash stop-all.sh
+Stopping namenodes on [localhost]
+Stopping datanodes
+Stopping secondary namenodes [Ashoks-MacBook-Pro.2.local]
+Stopping nodemanagers
+Stopping resourcemanager
+</code></pre></div></div>
+
+<p>Further reading…</p>
+
+<p><a href="https://medium.com/@dhiraj.p.rai/logistic-regression-in-spark-ml-8a95b5f5434c">Logistic Regression in Spark ML</a><br />
+<a href="https://medium.com/rahasak/logistic-regression-with-apache-spark-b7ec4c98cfcd">Logistic Regression with Apache Spark</a><br />
+<a href="https://towardsdatascience.com/apache-spark-mllib-tutorial-7aba8a1dce6e">Feature Transformation</a></p>
+
+<h2 id="references">References</h2>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="https://spark.apache.org">Apache Spark</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://spark.apache.org/docs/3.0.0/mllib-guide.html">Spark MLlib: RDD-based API</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:3">
+      <p><a href="https://medium.com/@achilleus/spark-session-10d0d66d1d24">A tale of Spark Session and Spark Context</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a> <a href="#fnref:3:1" class="reversefootnote">&#8617;<sup>2</sup></a> <a href="#fnref:3:2" class="reversefootnote">&#8617;<sup>3</sup></a></p>
+    </li>
+    <li id="fn:4">
+      <p><a href="https://hadoop.apache.org">Apache Hadoop</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p><a href="https://stackoverflow.com/questions/55993313/not-serialazable-exception-while-running-linear-regression-scala-2-12">NotSerializableException</a> <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#big-data" class="page__taxonomy-item" rel="tag">big data</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#bioinformatics" class="page__taxonomy-item" rel="tag">bioinformatics</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#emory-uiversity" class="page__taxonomy-item" rel="tag">Emory Uiversity</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#generalized-linear-regression" class="page__taxonomy-item" rel="tag">Generalized Linear Regression</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#hadoop-distributed-file-system" class="page__taxonomy-item" rel="tag">Hadoop Distributed File System</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#machine-learning" class="page__taxonomy-item" rel="tag">Machine Learning</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#scala" class="page__taxonomy-item" rel="tag">scala</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://adinasarapu.github.io/tags/#spark-mllib" class="page__taxonomy-item" rel="tag">Spark MLlib</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=https://adinasarapu.github.io/posts/2020/08/blog-post-spark-mllib/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://adinasarapu.github.io/posts/2020/08/blog-post-spark-mllib/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://adinasarapu.github.io/posts/2020/08/blog-post-spark-mllib/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="https://adinasarapu.github.io/posts/2020/08/blog-post-spark-sbt/" class="pagination--pager" title="Building a real-time big data pipeline (6: Spark Core, Hadoop, SBT)
+">Previous</a>
+    
+    
+      <a href="https://adinasarapu.github.io/posts/2020/10/blog-post-sparkr-mllib/" class="pagination--pager" title="Building a real-time big data pipeline (8: Spark MLlib, Regression, R)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<!--<a href="/cv/">Resume</a> -->
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/adinasarapu"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+      <li><a href="http://bitbucket.org/adinasarapu"><i class="fab fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+    
+    <!--<li><a href="https://adinasarapu.github.io/feed.xml">
+	<i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>-->
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Ashok R. Dinasarapu. 101 Woodruff Circle, Woodruff Memorial Research Building,  Room#6302, Emory University, Atlanta, GA 30322.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://adinasarapu.github.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'G-RWM39QLMPF', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,1260 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://wangdi2016.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wangdi2016.github.io/" rel="alternate" type="text/html" /><updated>2023-06-19T15:01:58-04:00</updated><id>https://wangdi2016.github.io/feed.xml</id><title type="html">Difei Wang Ph.D</title><subtitle></subtitle><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><entry><title type="html">Quantitative proteomics: aptamer-based quantitation of proteins</title><link href="https://wangdi2016.github.io/posts/2023/02/blog-post-somalogic-proteomics/" rel="alternate" type="text/html" title="Quantitative proteomics: aptamer-based quantitation of proteins" /><published>2023-02-20T00:00:00-05:00</published><updated>2023-02-20T00:00:00-05:00</updated><id>https://wangdi2016.github.io/posts/2023/02/blog-somalogic-proteomics</id><content type="html" xml:base="https://wangdi2016.github.io/posts/2023/02/blog-post-somalogic-proteomics/">&lt;p&gt;The aptamer-based &lt;a href=&quot;https://somalogic.com&quot;&gt;SomaScan®&lt;/a&gt; assay is one of the popular methods of measuring abundances of protein targets. There is very little information on correlation between mass spectrometry (MS)-based proteomics, SOMAscan and Olink assays; Olink is another popular high throughput antibody-based platform. Some studies also reported a measurement variation between those platforms. In general aptamers/SOMAmers are selected against target proteins in their native conformation and in some cases against a functional protein with “known” post translational modifications (PTMs). It’s well known that novel PTMs (pathogen or disease-induced) can impact the protein structure, electrophilicity and interactions with proteins. The other main disadvantage is quantification which is based on DNA microarray chips (background noise). The main advantages are lower cost and data analysis.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Table 1&lt;/strong&gt;. Overview of common proteomic platforms (Jiang W et al, Cancers, 2022).&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Analytical Technique&lt;/th&gt;
+      &lt;th&gt;Category&lt;/th&gt;
+      &lt;th&gt;Protein Sample Values&lt;/th&gt;
+      &lt;th&gt;Accepted Biospecimen Types&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Proximity Extension Assay (Olink)&lt;/td&gt;
+      &lt;td&gt;Antibody&lt;/td&gt;
+      &lt;td&gt;1 µL&lt;/td&gt;
+      &lt;td&gt;Plasma, tissue/cell, synovial fluid, CSF, plaque extract, and saliva&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Reverse Phase Protein Arrays&lt;/td&gt;
+      &lt;td&gt;Antibody&lt;/td&gt;
+      &lt;td&gt;5 µg (1.0- 1.5 mg/mL protein)&lt;/td&gt;
+      &lt;td&gt;Tissue/cell, plasma, serum, biopsies, body fluids&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bio-Plex&lt;/td&gt;
+      &lt;td&gt;Antibody (bead)&lt;/td&gt;
+      &lt;td&gt;12.5 µL (serum/plasma)&lt;/td&gt;
+      &lt;td&gt;50 µL (cell culture)	Plasma, serum, tissue/cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Simoa&lt;/td&gt;
+      &lt;td&gt;Antibody (bead)&lt;/td&gt;
+      &lt;td&gt;25 µL&lt;/td&gt;
+      &lt;td&gt;Plasma, serum, urine, tissue/cell, CSF, saliva&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Aptamer Group (Optmer)&lt;/td&gt;
+      &lt;td&gt;Aptamer&lt;/td&gt;
+      &lt;td&gt;38 µL&lt;/td&gt;
+      &lt;td&gt;Plasma (diagnostics and therapeutics), urine, tissue/cell, liquid matrices&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Base Pair Technologies&lt;/td&gt;
+      &lt;td&gt;Aptamer&lt;/td&gt;
+      &lt;td&gt;5–100 µL&lt;/td&gt;
+      &lt;td&gt;Plasma, serum, tissue/cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SOMAscan&lt;/td&gt;
+      &lt;td&gt;Aptamer&lt;/td&gt;
+      &lt;td&gt;55–100 µL&lt;/td&gt;
+      &lt;td&gt;Plasma, serum, CSF, urine, cell/tissue, synovial fluid, exosomes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Electrochemiluminescence Immunoassay&lt;/td&gt;
+      &lt;td&gt;ECLIA&lt;/td&gt;
+      &lt;td&gt;50 µL&lt;/td&gt;
+      &lt;td&gt;Plasma, serum, tissue/cell, CSF, urine, blood spots, tears, synovial fluid, tissue extracts&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Multiplex ELISA&lt;/td&gt;
+      &lt;td&gt;ELISA&lt;/td&gt;
+      &lt;td&gt;25–50 µL&lt;/td&gt;
+      &lt;td&gt;Plasma, serum, tissue/cell, urine, saliva, CSF&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Singleplex ELISA&lt;/td&gt;
+      &lt;td&gt;ELISA&lt;/td&gt;
+      &lt;td&gt;100 µL&lt;/td&gt;
+      &lt;td&gt;Plasma, serum, tissue/cell, urine, saliva, CSF&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2D-PAGE&lt;/td&gt;
+      &lt;td&gt;Gel electrophoresis&lt;/td&gt;
+      &lt;td&gt;~100 µg (15–50 µL)&lt;/td&gt;
+      &lt;td&gt;Plasma, serum, tissue/cell, urine&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DDA-MS&lt;/td&gt;
+      &lt;td&gt;MS&lt;/td&gt;
+      &lt;td&gt;10 µL&lt;/td&gt;
+      &lt;td&gt;Plasma, serum, tissue/cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SWATH-MS&lt;/td&gt;
+      &lt;td&gt;MS (DIA)&lt;/td&gt;
+      &lt;td&gt;5–10 µg&lt;/td&gt;
+      &lt;td&gt;Plasma, serum tissue/cell, platelets, monocytes/neutrophils&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;iTRAQ&lt;/td&gt;
+      &lt;td&gt;MS (labeling in LC–MS–MS)&lt;/td&gt;
+      &lt;td&gt;12 µg&lt;/td&gt;
+      &lt;td&gt;Plasma, serum, tissue/cells, saliva&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SRM/MRM&lt;/td&gt;
+      &lt;td&gt;MS (LC–MS–MS)&lt;/td&gt;
+      &lt;td&gt;15 µL&lt;/td&gt;
+      &lt;td&gt;Plasma, tissue/cell, dried blood spots&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The SomaScan Assay v4.1 measures simultaneously ~6,600 unique human proteins in a single sample (see &lt;strong&gt;Table 2&lt;/strong&gt;). Those protein targets were evaluated by ~7,300 aptamers called SOMAmers (Slow Off-rate Modified Aptamers). SOMAmers are short single-stranded DNA molecules, which are chemically modified to specifically bind to protein targets. The SOMAscan assay measures native proteins in complex matrices by transforming each individual protein concentration into a corresponding SOMAmer reagent concentration, which is then quantified using DNA microarrays. SOMAmer reagents are selected against proteins in their native folded conformations and are therefore generally found to require an intact, tertiary protein structure for binding.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Table 2&lt;/strong&gt;. The 7k SomaScan Assay v4.1 panel (7,596 aptamers mapping to 6,414 unique human protein targets).&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Organism&lt;/th&gt;
+      &lt;th&gt;SOMAmers&lt;/th&gt;
+      &lt;th&gt;UniProt IDs (all)&lt;/th&gt;
+      &lt;th&gt;UniProt IDs (Unique)&lt;/th&gt;
+      &lt;th&gt;Protein Targets&lt;/th&gt;
+      &lt;th&gt;Gene IDs&lt;/th&gt;
+      &lt;th&gt;Gene Symbols&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Human&lt;/td&gt;
+      &lt;td&gt;7335&lt;/td&gt;
+      &lt;td&gt;7301&lt;/td&gt;
+      &lt;td&gt;6414&lt;/td&gt;
+      &lt;td&gt;6610&lt;/td&gt;
+      &lt;td&gt;6408&lt;/td&gt;
+      &lt;td&gt;6398&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mouse&lt;/td&gt;
+      &lt;td&gt;236&lt;/td&gt;
+      &lt;td&gt;236&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;African clawed frog&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Gila monster&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Hornet&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Jellyfish&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Thermus thermophilus&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Common eastern firefly&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bacillus stearothermophilus&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ensifer meliloti&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;European elder&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;HIV-1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;HIV-2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Red alga&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;strain K12&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Total&lt;/td&gt;
+      &lt;td&gt;7596&lt;/td&gt;
+      &lt;td&gt;7562&lt;/td&gt;
+      &lt;td&gt;6431&lt;/td&gt;
+      &lt;td&gt;6628&lt;/td&gt;
+      &lt;td&gt;6415&lt;/td&gt;
+      &lt;td&gt;6411&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;ADAT file&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;ADAT is a tab-delimited text file format. The contents include SOMAmer reagent intensities, sample data, sequence data and experimental metadata. For each SOMAmer reagent sequence, the ADAT file typically contains corresponding protein name, UniProt ID, Entrez Gene ID and Entrez Gene symbol.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SomaDataIO&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://somalogic.github.io/SomaDataIO/index.html&quot;&gt;SomaDataIO v5.3.1&lt;/a&gt; is an R package for working with the SomaLogic ADAT file format.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;library(SomaDataIO)
+library(purrr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read_adat()&lt;/code&gt; function imports data from ADAT files.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;base.dir = &quot;/Users/adinasa/Documents/&quot;
+adat_file &amp;lt;- &quot;example.adat&quot;
+my_adat &amp;lt;- read_adat(paste0(base.dir,adat_file))  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Update the ADAT file with sample group information (adding sample group details from external file). Save the updated ADAT file (optional).&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;meta_file = paste(base.dir, &quot;MAPPING.csv&quot;, sep=&quot;/&quot;)  
+meta &amp;lt;- read.csv(meta_file, header = T, stringsAsFactors = FALSE)  
+meta$SampleId &amp;lt;- as.character(meta$SampleId)  
+my_adat &amp;lt;- dplyr::left_join(my_adat,meta, by=&quot;SampleId&quot;, keep=FALSE)
+write_adat(my_adat, file = paste(base.dir, &quot;example_updated.adat&quot;, sep=&quot;/&quot;))  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Utility functions.&lt;/p&gt;
+
+&lt;p&gt;regex for analytes&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;is_seq &amp;lt;- function(.x) grepl(&quot;^seq\\.[0-9]{4}&quot;, .x)  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;center/scale vector (z-scores).&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cs &amp;lt;- function(.x) {      out &amp;lt;- .x - mean(.x)  
+  out / sd(out)       
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Data were log2-transformed within each sample. Control and Disease are two groups (this may vary in your data).&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cleanData &amp;lt;- my_adat %&amp;gt;% 
+  filter(SampleType == &quot;Sample&quot;) %&amp;gt;% drop_na(Group) %&amp;gt;% 
+  log2() %&amp;gt;% 
+  mutate(SampleGroup = as.numeric(factor(Group, levels=c(&quot;Control&quot;, &quot; Disease&quot;))) - 1) %&amp;gt;% 
+  modify_if(is_seq(names(.)), cs)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Human proteins with Uniprot ID and QC=PASS selected.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;t_tests &amp;lt;- getAnalyteInfo(cleanData2) %&amp;gt;% 
+  filter(ColCheck == &quot;PASS&quot;) %&amp;gt;% 
+  filter(Organism == &quot;Human&quot;) %&amp;gt;%
+  filter(UniProt != &quot;&quot;) %&amp;gt;%
+  select(AptName, SeqId, Target = TargetFullName,Organism, EntrezGeneID, EntrezGeneSymbol, UniProt, ColCheck)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Performed a Student’s t-test.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;t_tests &amp;lt;- t_tests %&amp;gt;% 
+  mutate(
+    formula = map(AptName, ~ as.formula(paste(.x, &quot;~ SampleGroup&quot;))), 
+    t_test  = map(formula, ~ stats::t.test(.x, data = cleanData,var.equal = TRUE)),  
+    t_stat  = map_dbl(t_test, &quot;statistic&quot;),            
+    p.value = map_dbl(t_test, &quot;p.value&quot;),              
+    fdr     = p.adjust(p.value, method = &quot;BH&quot;)         
+  ) %&amp;gt;% arrange(p.value)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The results were used to identify proteins significantly associated with disease using a Benjamini-Hochberg false discovery rate (FDR) threshold of 1%.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;t_tests [t_tests$fdr &amp;lt;= 0.1,]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Further reading … &lt;br /&gt;
+&lt;a href=&quot;https://wangdi2016.github.io/posts/2020/01/blog-post-tmt/&quot;&gt;Tandem Mass Tag (TMT)-based quantitation of proteins&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://wangdi2016.github.io/posts/2018/04/blog-post-lfq/&quot;&gt;Label-Free Quantitation (LFQ) of proteins&lt;/a&gt;&lt;/p&gt;</content><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><category term="SOMALogic" /><category term="Quantitative Proteomics" /><category term="aptamer-based proteomics" /><category term="Emory University" /><category term="Olink Proteomics" /><category term="MS-based Proteomics" /><summary type="html">The aptamer-based SomaScan® assay is one of the popular methods of measuring abundances of protein targets. There is very little information on correlation between mass spectrometry (MS)-based proteomics, SOMAscan and Olink assays; Olink is another popular high throughput antibody-based platform. Some studies also reported a measurement variation between those platforms. In general aptamers/SOMAmers are selected against target proteins in their native conformation and in some cases against a functional protein with “known” post translational modifications (PTMs). It’s well known that novel PTMs (pathogen or disease-induced) can impact the protein structure, electrophilicity and interactions with proteins. The other main disadvantage is quantification which is based on DNA microarray chips (background noise). The main advantages are lower cost and data analysis.</summary></entry><entry><title type="html">Kaplan-Meier Curve using R</title><link href="https://wangdi2016.github.io/posts/2022/10/blog-post-kaplan-meier-curve/" rel="alternate" type="text/html" title="Kaplan-Meier Curve using R" /><published>2022-10-19T00:00:00-04:00</published><updated>2022-10-19T00:00:00-04:00</updated><id>https://wangdi2016.github.io/posts/2022/10/blog-Kaplan-Meier-curve</id><content type="html" xml:base="https://wangdi2016.github.io/posts/2022/10/blog-post-kaplan-meier-curve/">&lt;p&gt;Kaplan-Meier curve shows what the probability of an event (for example, survival) at a certain time interval. The log-rank test compares the survival curves of two or more groups. With a small subset of patients, the Kaplan-Meier estimates can be misleading and should be interpreted with caution.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;KM Analysis using R&lt;/strong&gt;
+The packages used for the analysis are &lt;a href=&quot;https://cran.r-project.org/web/packages/survival/index.html&quot;&gt;survival&lt;/a&gt; and &lt;a href=&quot;https://cran.r-project.org/web/packages/survminer/index.html&quot;&gt;survminer&lt;/a&gt;. Use install.packages( ) to install these libraries just in case if they are not pre installed in your R workspace.&lt;/p&gt;
+
+&lt;p&gt;Load Required libraries&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;library(survival)  
+library(survminer)  
+library(dplyr)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Read the vital dataset&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;base.dir = &quot;/Users/adinasa/Documents/Nabil/survival_analysis&quot;    
+data = read.csv(file=paste0(base.dir,&quot;/KM_Test_data.csv&quot;),header=T)  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Examine the dataset (Vital status: 1 for dead; 0 for alive)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;head(data)  
+  
+ID      p16 		Status	Days  
+GHN-11  unknown		1  	803  
+GHN-15  unknown		1  	775  
+GHN-20  unknown		1  	150  
+GHN-21  unknown		0 	2036  
+GHN-24  unknown		1  	718  
+GHN-25	negative	1  	598  
+HN-39	positive	0	1232  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create a survival object, usually used as a response variable in a model formula.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;surv_obj = survival::Surv(time=data$Days, event = data$Status)  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Wrapper arround the standard survfit() function to create survival curves&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fit = survminer::surv_fit(surv_obj ~ p16, data = data)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can replace the above two steps with&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fit = surv_fit(Surv(Days, Status) ~ p16, data = data)  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Plot the KM curve. With pval = TRUE argument, it plots the p-value of a log rank test, which will help us to get an idea if the groups are significantly different or not.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;png(filename = paste(base.dir, &quot;KM_Plot.png&quot;, sep=&quot;/&quot;),width = 1300, height = 1300, res=200)  
+ggsurvplot(fit_1, pval=TRUE, risk.table=TRUE)  
+dev.off()  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/KM_Plot.png&quot; alt=&quot;KM Plot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;KM plot&lt;/strong&gt; The lines represent survival curves of the 3 groups; HPV-status: positive [N=23], negative [N=5] and unknown [N=7]. A vertical drop in the curves indicates an event (eg. death). For HPV-positive: 5 (21.7%); HPV-negative: 4 (80%) and HPV-unknown: 5 (71.4%) events.&lt;/p&gt;
+
+&lt;p&gt;The lengths of the horizontal lines along the X-axis of serial times represent the survival duration for that interval. The vertical tick mark on the curves means that a patient was censored at this time; a patient has not (yet) experienced the event of interest, such as death, within the study time period. If many patients were censored in a given group(s), one must question how the study was carried out or how the type of treatment affected the patients. This stresses the importance of showing censored patients as tick marks in survival curves.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Risk table&lt;/strong&gt; At time zero, the survival probability is 1.0 (or 100% of the participants are alive). At time 0, all 35 are alive or at risk and after 1000 days, there are 21 participants alive or at risk; after 3000 days, 3 participants are alive or at risk.&lt;/p&gt;</content><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><category term="Kaplan-Meier-curve" /><category term="Survival analysis" /><category term="Vital" /><category term="Bioinformatics" /><category term="Emory University" /><summary type="html">Kaplan-Meier curve shows what the probability of an event (for example, survival) at a certain time interval. The log-rank test compares the survival curves of two or more groups. With a small subset of patients, the Kaplan-Meier estimates can be misleading and should be interpreted with caution.</summary></entry><entry><title type="html">Annotation of genetic variants</title><link href="https://wangdi2016.github.io/posts/2021/04/blog-post-vep/" rel="alternate" type="text/html" title="Annotation of genetic variants" /><published>2021-04-13T00:00:00-04:00</published><updated>2021-04-13T00:00:00-04:00</updated><id>https://wangdi2016.github.io/posts/2021/04/blog-vep</id><content type="html" xml:base="https://wangdi2016.github.io/posts/2021/04/blog-post-vep/">&lt;p&gt;Tools such as ANNOVAR, Variant Effect Predictor (VEP) or SnpEff annotate genetic variants (SNPs, INDELS, CNVs etc) present in VCF file. These tools integrate the annotations within the INFO column of the original VCF file.&lt;/p&gt;
+
+&lt;p&gt;Variant Call Format or VCF is a text file with multiple lines of meta-information, a header line, and data rows each containing information about a loci or sequence variant in the genome. Aside from the chromosomal location and observed alleles, these loci are basically anonymous. VCF is the primary (and only well-supported) format used by the GATK for variant calls. A GVCF or Genomic VCF is a kind of VCF, so the basic format specification is the same as for a regular VCF, but a Genomic VCF contains extra information.&lt;/p&gt;
+
+&lt;p&gt;The Ensembl Variant Effect Predictor (VEP) annotates&lt;br /&gt;
+• location of the variants on genome&lt;br /&gt;
+• known variants based on database matching&lt;br /&gt;
+• gene and transcript names affected by the variants&lt;br /&gt;
+• consequence of variation on the protein sequence (stop gain/lost, missense, frameshift)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 1&lt;/strong&gt;: &lt;a href=&quot;https://docs.docker.com/engine/install/&quot;&gt;Install Docker Engine&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;“Docker Engine is available on a variety of Linux platforms, macOS and Windows 10 through Docker Desktop, and as a static binary installation”.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 2&lt;/strong&gt;: Clone or Pull the VEP docker image&lt;/p&gt;
+
+&lt;p&gt;Create a directory on your machine and make sure that the created directory on your machine has read and write access granted so that the docker container can write in the directory (VEP output).&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir $HOME/vep_data
+chmod a+rwx $HOME/vep_data    
+docker pull ensemblorg/ensembl-vep   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pre-configure the volume &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vep_data&lt;/code&gt; for the container; this is required if you wish to download data (e.g. cache files) that persists across sessions. The following command  mounts the volume &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/vep_data&lt;/code&gt; into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/vep/.vep&lt;/code&gt; in the container. If you copy your data to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/vep_data&lt;/code&gt; directory, you will see that data in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/vep/.vep&lt;/code&gt; directory of the container.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-t&lt;/code&gt;: Allocate a pseudo-TTY&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-i&lt;/code&gt;: Interactive / Keep STDIN open even if not attached&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-v&lt;/code&gt;: Bind mount a volume&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker_image&lt;/code&gt; is ensemblorg/ensembl-vep&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -t -i -v $HOME/vep_data:/opt/vep/.vep ensemblorg/ensembl-vep  
+
+exit  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker run&lt;/code&gt;, allows you to enter into the container using an interactive terminal. Once you are inside do: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls -lsa&lt;/code&gt; to list the files&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vep@56d4ccaf3e34:~/src/ensembl-vep$ ls -lsa
+total 188
+ 4 drwxr-xr-x  1 vep  vep   4096 Apr  7 15:30 .
+ 4 drwxr-xr-x  1 root root  4096 Apr  7 15:26 ..
+ 4 drwxr-xr-x 45 vep  vep   4096 Apr  7 15:27 Bio
+20 -rwxr-xr-x  1 vep  vep  16698 Apr  7 15:19 convert_cache.pl
+ 4 drwxr-xr-x  2 vep  vep   4096 Apr  7 15:19 examples
+20 -rwxr-xr-x  1 vep  vep  16620 Apr  7 15:19 filter_vep
+ 8 -rwxr-xr-x  1 vep  vep   4880 Apr  7 15:19 haplo
+56 -rwxr-xr-x  1 vep  vep  56607 Apr  7 15:19 INSTALL.pl
+12 -rw-r--r--  1 vep  vep  11478 Apr  7 15:19 LICENSE
+ 4 drwxr-xr-x  3 vep  vep   4096 Apr  7 15:19 modules
+16 -rw-r--r--  1 vep  vep  12906 Apr  7 15:19 README.md
+ 4 drwxr-xr-x  2 vep  vep   4096 Apr  7 15:19 validator
+ 4 -rw-r--r--  1 vep  vep    128 Apr  7 15:29 variant_effect_output.txt_warnings.txt
+ 8 -rwxr-xr-x  1 vep  vep   5079 Apr  7 15:19 variant_recoder
+16 -rwxr-xr-x  1 vep  vep  14462 Apr  7 15:19 vep
+ 4 drwxr-xr-x  2 vep  vep   4096 Apr  7 15:27 .version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depending on Plugin, you need to download and prepare data for a plugin.&lt;br /&gt;
+For example &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dbNSFP&lt;/code&gt; plugin needs the following preprocessing of downloaded file,  &lt;br /&gt;
+Programs like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tabix&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unzip&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wget&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zcat&lt;/code&gt; are available in container at /opt/vep/.vep/.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget ftp://dbnsfp:dbnsfp@dbnsfp.softgenetics.com/dbNSFP4.1a.zip
+unzip dbNSFP4.1a.zip
+zcat dbNSFP4.1a_variant.chr1.gz | head -n1 &amp;gt; h
+zgrep -h -v ^#chr dbNSFP4.1a_variant.chr* | sort -T /path/to/tmp_folder -k1,1 -k2,2n - | cat h - | bgzip -c &amp;gt; dbNSFP4.1a_grch38.gz
+tabix -s 1 -b 2 -e 2 dbNSFP4.1a_grch38.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In a separate terminal, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker ps&lt;/code&gt; command to list all running containers. To see all the containers both stopped and running use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-a&lt;/code&gt; flag.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker ps -a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 3&lt;/strong&gt;: Cache and Plugins installation&lt;/p&gt;
+
+&lt;p&gt;Use the following commands to set up the cache and corresponding FASTA for human GRCh38 genome.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -t -i -v $HOME/vep_data:/opt/vep/.vep ensemblorg/ensembl-vep perl INSTALL.pl -a cf -s homo_sapiens -y GRCh38
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To install all the available plugins&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -t -i -v $HOME/vep_data:/opt/vep/.vep ensemblorg/ensembl-vep perl INSTALL.pl -a cfp -s homo_sapiens -y GRCh38 -g all
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 4&lt;/strong&gt;: Create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vep.sh&lt;/code&gt; file&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#!/bin/sh
+# Example of VEP command line:
+vep --cache --offline --format vcf --vcf --force_overwrite \
+	--dir_cache /opt/vep/.vep/ \
+	--dir_plugins /opt/vep/.vep/Plugins/ \
+	--input_file /opt/vep/.vep/input/Dystonia.gatk4.vqsr_variants.g.vcf.gz \
+	--output_file /opt/vep/.vep/output/Dystonia.gatk4.vqsr_vep.g.vcf \
+	--plugin dbNSFP,/opt/vep/.vep/Plugins/dbNSFP4.1a_grch38.gz,ALL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 5&lt;/strong&gt;: Copy or transfer the input data i.e vcf file&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir -p /Users/adinasa/vep_data/{input,output,script}
+cp Dystonia.gatk4.vqsr_variants.g.vcf.gz ~/vep_data/input/
+cp vep.sh /Users/adinasa/vep_data/script
+cp dbNSFP4.1a_grch38.gz /Users/adinasa/vep_data/Plugins 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 6&lt;/strong&gt;: Run the script&lt;/p&gt;
+
+&lt;p&gt;Finally, run the script inside container.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -t -i -v $HOME/vep_data:/opt/vep/.vep ensemblorg/ensembl-vep
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Starts a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bash&lt;/code&gt; session&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vep@88d2b95cfd6a:~/src/ensembl-vep$ cd /opt/vep/.vep/script/
+sh vep.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><category term="Genomics" /><category term="WGS" /><category term="VCF" /><category term="Variant calling" /><category term="Genotypes" /><category term="NGS" /><category term="VEP" /><category term="Bioinformatics" /><category term="Emory University" /><summary type="html">Tools such as ANNOVAR, Variant Effect Predictor (VEP) or SnpEff annotate genetic variants (SNPs, INDELS, CNVs etc) present in VCF file. These tools integrate the annotations within the INFO column of the original VCF file.</summary></entry><entry><title type="html">Quantitative proteomics: TMT-based quantitation of proteins</title><link href="https://wangdi2016.github.io/posts/2020/01/blog-post-tmt/" rel="alternate" type="text/html" title="Quantitative proteomics: TMT-based quantitation of proteins" /><published>2020-04-04T00:00:00-04:00</published><updated>2020-04-04T00:00:00-04:00</updated><id>https://wangdi2016.github.io/posts/2020/01/blog-tmt</id><content type="html" xml:base="https://wangdi2016.github.io/posts/2020/01/blog-post-tmt/">&lt;p&gt;Quantification of proteins using isobaric labeling (tandem mass tag or TMT) starts with the reduction of disulfide bonds in proteins with Dithiothreitol (DTT).&lt;/p&gt;
+
+&lt;p&gt;Alkylation with iodoacetamide (IAA) after cystine reduction results in the covalent addition of a carbamidomethyl group that prevents the formation of disulfide bonds. Then, overnight digestion of the proteins using trypsin or trypsin/LyC mixture, Tandem Mass Tag (TMT) labeling on Lysine residues, pooling of all samples and the fractionation of peptide mixture. Finally, LC-MS/MS data acquisition and database search for protein identification and quantification.&lt;/p&gt;
+
+&lt;p&gt;Fractionation prior to LC-MS/MS analysis effectively detects low abundance proteins (&amp;lt;100ng/mL), which is the concentration range of most clinical biomarkers.&lt;/p&gt;
+
+&lt;p&gt;TMT-based approach allows multiplexing of samples. TMT 6-plex reagents produces a series of different reporter ions with nominal masses from 126 to 131 Da at 1 Da intervals. Several TMT reagents are commercially available including TMTzero, TMT duplex, TMT 6-plex, and TMT 10-plex &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. They have the same chemical structure but contain different numbers and combinations of 13C and 15N isotopes in the reporter group. The overall calibrated intensities of reporter ions equal.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Isobaric labeling reagent (TMT) structure&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;a. An amine-specific reactive group – an N-hydroxysuccinimide ester, which reacts with primary amines i.e unblocked N-terminals and lysine side chains.&lt;br /&gt;
+b. A mass reporter group for quantification – the reporter groups are partially fragmented from the peptide during precursor fragmentation in the mass spectrometer.&lt;br /&gt;
+c. A mass normalizer group to link the reactive and reporter groups – mass normalizer group ensures that the peptide complexity in the MS1 spectra does not increase with multiplexing.&lt;/p&gt;
+
+&lt;p&gt;Unless otherwise noted, every analysis utilizes an MS3-based TMT-centric mass spectrometry method. MS2-based TMT yields the highest precision but lowest accuracy due to ratio compression, which MS3-based TMT can partly rescue &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. To 10 precursors selected for MS2/MS3 analysis.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What are the correction factors used for TMT?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;TMT reporter ion signals need to be adjusted to account for isotopic impurities in each TMT variant.  For TMT-10plex labeling, different batches of TMT reagents have slightly different isotope impurities that need to be included for database search to correct the reporter ion ratio. The information of isotope impurity can be found in the reagent kit. However, I do not normally correct for isotopic impurities of TMT reagents, as this is typically a «1.2% shift.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Database search for protein identification and quantification&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;The resulting TMT-MS3 data (.raw files) are processed using MaxQuant with an integrated Andromeda search engine (v.1.6.7.0). Tandem mass spectra were searched against the Uniprot database.&lt;/p&gt;
+
+&lt;p&gt;Download and install  &lt;a href=&quot;https://bitbucket.org/wangdi2016/aws_maxquant_persues/src/master/&quot;&gt;MaxQuant&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Specification of Various Parameters in MaxQuant (All the other parameters in MaxQuant are set to the default values for processing orbitrap-type data)&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Raw data&lt;/strong&gt; pane&lt;br /&gt;
+Using Load, select all raw files from all batches. Update Experiment (a unique value for each of the samples) and Fraction (if available) column values using set experiment and set fractions buttons.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Group-specific parameters&lt;/strong&gt; pane&lt;br /&gt;
+Change Type as Reporter ion MS3 and then select “10plex TMT”. Update isobaric impurities values, if available. For Modifications, select Variable modifications as Oxidation (M), Acetyl (Protein N-term); Deamidation (NQ) and Fixed Modifications as Carbamidomethyl© and, TMT labeled N- terminus and lysine residue. Specify Trypsin/P as a cleavage enzyme using Digestion and allow up to 2 missing cleavages. Set Label-free quantification as None.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Global parameters&lt;/strong&gt; pane&lt;br /&gt;
+For Sequences select a reference proteome database Uniprot FASTA file and update Max. peptide mass [Da] as 6000. For Protein quantification select Use only unmodified peptides and a list of modifications such as Oxidation (M), Acetyl (Protein N-term) and Deamidation. Select Match between runs in Identification tab.&lt;/p&gt;
+
+&lt;p&gt;Update the following two parameters for MS/MS analyzer:&lt;br /&gt;
+a. FTMS MS/MS match tolerance: 0.05 Da&lt;br /&gt;
+b. ITMS MS/MS match tolerance: 0.6 Da&lt;/p&gt;
+
+&lt;p&gt;For Folder location select tmp directory (optional).&lt;/p&gt;
+
+&lt;p&gt;Further data processing is performed using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Perseus v1.6.12.0&lt;/code&gt; &lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. The search results in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProteinGroups.txt&lt;/code&gt; generated by MaxQuant are directly processed by Perseus software. MaxQuant reports the TMT-MS3 quantitative relative abundance metrics in the columns titled “Reporter intensity corrected”.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Further reading&lt;/strong&gt;:&lt;br /&gt;
+Data normalization and analysis in multiple TMT experimental designs &lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;br /&gt;
+Multiplexed Protein Quantification Using the Isobaric TMT … &lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;br /&gt;
+Isobaric matching between runs and novel PSM-level normalization in MaxQuant … &lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;AWS Windows instance for &lt;a href=&quot;https://bitbucket.org/wangdi2016/aws_maxquant_persues/src&quot;&gt;MaxQuant/Perseus&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;Bąchor, R.; Waliczek, M.; Stefanowicz, P.; Szewczuk, Z. Trends in the Design of New Isobaric Labeling Reagents for Quantitative Proteomics. Molecules 2019, 24, 701. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;A. Hogrebe, L. von Stechow, D.B. Bekker-Jensen, B.T. Weinert, C.D. Kelstrup, J.V. Olsen Benchmarking common quantification strategies for large-scale phosphoproteomics Nat. Commun., 9 (2018), p. 1045. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.coxdocs.org/doku.php?id=maxquant:start&quot;&gt;MaxQuant&lt;/a&gt; &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.coxdocs.org/doku.php?id=perseus:start&quot;&gt;Perseus&lt;/a&gt; &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:5&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://pwilmart.github.io/TMT_analysis_examples/multiple_TMT_MQ.html&quot;&gt;TMT Batch Correction&lt;/a&gt; &lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:6&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://assets.thermofisher.com/TFS-Assets/CMD/Reference-Materials/PP-TMT-Multiplexed-Protein-Quantification-HUPO2015-EN.pdf&quot;&gt;TMT analysis using Proteome Discoverer&lt;/a&gt; &lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:7&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://doi.org/10.1101/2020.03.30.015487&quot;&gt;Isobaric matching between runs and novel PSM-level normalization&lt;/a&gt; &lt;a href=&quot;#fnref:7&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><category term="Proteomics" /><category term="TMT" /><category term="tandem mass tag" /><category term="MS3 spectra" /><category term="MaxQuant" /><category term="isobaric labeling" /><category term="Perseus" /><category term="TMT 10plex" /><category term="10plex" /><category term="Bioinformatics" /><category term="Emory University" /><summary type="html">Quantification of proteins using isobaric labeling (tandem mass tag or TMT) starts with the reduction of disulfide bonds in proteins with Dithiothreitol (DTT).</summary></entry><entry><title type="html">Quantitative proteomics: label-free quantitation of proteins</title><link href="https://wangdi2016.github.io/posts/2018/04/blog-post-lfq/" rel="alternate" type="text/html" title="Quantitative proteomics: label-free quantitation of proteins" /><published>2020-04-04T00:00:00-04:00</published><updated>2020-04-04T00:00:00-04:00</updated><id>https://wangdi2016.github.io/posts/2018/04/blog-lfq</id><content type="html" xml:base="https://wangdi2016.github.io/posts/2018/04/blog-post-lfq/">&lt;p&gt;Updated on September 13, 2021&lt;/p&gt;
+
+&lt;p&gt;Liquid chromatography (LC) coupled with mass spectrometry (MS) has been widely used for protein expression quantification. Protein quantification by tandem-MS (MS/MS) uses integrated peak intensity from the parent-ion mass (MS1) or features from fragment-ions (MS2).&lt;/p&gt;
+
+&lt;p&gt;Label-free quantification (LFQ) may be based on precursor ion intensity (peak areas or peak heights) or on spectral counting. Here, the MaxLFQ algorithm is applied, which relies on chromatographic ion intensities.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;iBAC and LFQ intensity&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;MS1 methods use the iBAQ (intensity Based Absolute Quantification) algorithm and iBAQ intensity is a protein’s total non-normalised intensity(all peptides) divided by the number of measurable tryptic peptides.&lt;/p&gt;
+
+&lt;p&gt;iBAQ: Σintensity/#theoretical peptides&lt;/p&gt;
+
+&lt;p&gt;LFQ (label-free quantitation) intensity is a very similar to the iBAQ intensity but the protein intensities are normalized to exculde some “outliers” to best represent the ratio changes of different samples.&lt;/p&gt;
+
+&lt;p&gt;Untargeted label-free quantitation (LFQ) of proteins, aims to determine the relative amount of proteins in two or more biological samples. Mass spectrometer generated &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;raw&lt;/code&gt; files are used for label-free quantitation of proteins. Base peak chromatograms can be inspected visually using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RawMeat&lt;/code&gt;&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, which  is a data quality assessment tool designed for Thermo instruments.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. MaxQuant Search&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;All raw files are processed together in a single run by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MaxQuant v1.6.15.0&lt;/code&gt; &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; with default parameters except the following&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Raw data&lt;/code&gt; pane&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Load all raw data files of a single run.&lt;/li&gt;
+  &lt;li&gt;Select a sample file(s) and edit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set experiment&lt;/code&gt; to assign a unique ID. If you don´t assign a unique ID to each biological sample, MaxQuant will put them together in the output.&lt;/li&gt;
+  &lt;li&gt;Select a sample file and edit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set fractions&lt;/code&gt; to assign fraction value. If you don’t have a fractionation, set 1.&lt;/li&gt;
+  &lt;li&gt;Number of processors: 4 (depends on your computer)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Group-specific parameters&lt;/code&gt; pane&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Type: Standard and Multiplicity: 1&lt;/li&gt;
+  &lt;li&gt;Modifications:&lt;br /&gt;
+  a. Variable modifications: Oxidation(M); Acetyl (Protein N-term); Deamidation (NQ)&lt;br /&gt;
+  b. Fixed modifications: Carbamidomethyl (C)&lt;/li&gt;
+  &lt;li&gt;Digestion: trypsin&lt;/li&gt;
+  &lt;li&gt;Instrument: Orbitrap&lt;/li&gt;
+  &lt;li&gt;Label-free quantification: LFQ (LFQ min. ratio count: 2)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Global parameters&lt;/code&gt; pane&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Sequences:&lt;br /&gt;
+ a. Add D:\Proteomics\HUMAN.fasta (download it from UNIPROT)&lt;br /&gt;
+ b. Identifier rule: Uniprot identifier&lt;br /&gt;
+ c. Min. peptide length: 6&lt;br /&gt;
+ d. Max. peptide mass [Da]: 6000&lt;/li&gt;
+  &lt;li&gt;Protein quantification:&lt;br /&gt;
+ a. Label min. ratio count: 1&lt;br /&gt;
+ b. Peptides for quantification: Unique+razor&lt;br /&gt;
+ c. Modifications used in protein quantification: Oxidation(M); Acetyl (Protein N-term); Deamidation (NQ)&lt;br /&gt;
+ d. Discard unmodified counterpart peptides: FALSE&lt;/li&gt;
+  &lt;li&gt;Tables&lt;br /&gt;
+ a. Write msScans tabls: TRUE&lt;/li&gt;
+  &lt;li&gt;MS/MS analyzer&lt;br /&gt;
+ a. FTMS MS/MS match tolerance: 0.05 Da&lt;br /&gt;
+ b. ITMS MS/MS match tolerance: 0.6 Da&lt;/li&gt;
+  &lt;li&gt;Identification:&lt;br /&gt;
+ a. Match between runs: TRUE (optional)&lt;br /&gt;
+ b. Find dependent peptides: FALSE&lt;br /&gt;
+ c. Razor protein FDR: TRUE&lt;/li&gt;
+  &lt;li&gt;Label free quantification&lt;br /&gt;
+ a. iBAQ: TRUE&lt;br /&gt;
+ b. Separate LFQ in parameter groups: TRUE&lt;/li&gt;
+  &lt;li&gt;Folder locations&lt;br /&gt;
+ a. Combine folder location: D:\results (optional)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;Match between runs&lt;/em&gt;: Peptides, which are present in several samples, but not identified &lt;em&gt;via&lt;/em&gt; MS/MS in all of them, can still be identified &lt;em&gt;via&lt;/em&gt; matching between runs. Setting TRUE will boosts number of identifications.&lt;/p&gt;
+
+&lt;p&gt;Database searches are performed using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Andromeda&lt;/code&gt; search engine (a peptide search engine based on probabilistic scoring) with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UniProt-SwissProt&lt;/code&gt; human canonical database as a reference and a contaminants database of common laboratory contaminants. MaxQuant reports summed intensity for each protein, as well as it`s iBAQ and LFQ values.&lt;/p&gt;
+
+&lt;p&gt;Proteins that share all identified peptides are combined into a single protein group. Peptides that match multiple protein groups (“razor” peptides) are assigned to the protein group with the most unique peptides. MaxQuant employs the MaxLFQ algorithm for label-free quantitation (LFQ). Quantification will be performed using razor and unique peptides, including those modified by acetylation (protein N-terminal), oxidation (Met) and deamidation (NQ).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Quality Control of MaxQuant Search&lt;/strong&gt; (optional)&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PTXQC&lt;/code&gt;&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; is an R package used for general quality control of proteomics data, which takes MaxQuant result files.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;library(&quot;devtools&quot;)  
+install_github(&quot;cbielow/PTXQC&quot;, build_vignettes=TRUE, dependencies=TRUE)  
+
+library(PTXQC)  
+PTXQC::createReport(&quot;path_to_txt_directory&quot;)  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Open final report file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;report_v1.0.5_combined.pdf&lt;/code&gt;&lt;br /&gt;
+&lt;img src=&quot;/images/proteomics-qc.png&quot; alt=&quot;proteomics-qc&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Post processing of MaxQuant Search results&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Further data processing is performed using `Perseus v1.6.14.0)&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. In brief, protein group LFQ intensities are log2-transformed to reduce the effect of outliers. To overcome the obstacle of missing LFQ values, missing values are imputed before fit the models. Hierarchical clustering is performed on Z-score normalized, log2-transformed LFQ intensities. Log ratios are calculated as the difference in average log2 LFQ intensity values between experimental and control groups. Two-tailed, Student’s t test calculations are used in statistical tests. A protein is considered statistically significant if its fold change is ≥ 2 and FDR ≤ 0.01. Please refer to its &lt;a href=&quot;http://www.coxdocs.org/doku.php?id=perseus:start&quot;&gt;documentation&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;p&gt;Export Perseus processed LFQ data as a text file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Perseus_filtered_transformed_valid_values_imputed_ttest.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Perseus exported file processing&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/cox-labs/PerseusR&quot;&gt;PerseusR&lt;/a&gt; enables the interoperability between the Perseus platform for omics data analysis (Tyanova et al. 2016). If you select “Write quality and imputed matrices” when you save Perseus processed data as a text file, inlude &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;additionalMatrices=TRUE&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;library(PerseusR)
+
+setwd(&quot;/Users/Documents/Proteomics/Perseus&quot;)
+
+inFile &amp;lt;- &quot;Perseus_filtered_transformed_valid_values_imputed_ttest.txt&quot;
+mdata &amp;lt;- PerseusR::read.perseus.as.matrixData(inFile,additionalMatrices=TRUE,check = FALSE)
+
+# 1. log(LFQ) data with imputed values 
+data &amp;lt;- main(mdata) # head(data)
+
+# 2. Gene/Protein names, p-value, FDR and fold change
+annotations &amp;lt;- annotCols(mdata) # colnames(annotations)
+
+# Select first annotation in Protein.ID &quot;sp|P31943|HNRH1_HUMAN;sp|Q9NQA5|TRPV5_HUMAN&quot;    
+annotations$Protein.IDs &amp;lt;- sub(&quot;;.*&quot;,&quot;&quot;, annotations$Protein.IDs)
+
+# Select Protein ID as HNRH1_HUMAN from sp|P31943|HNRH1_HUMAN;
+annotations$Protein.IDs &amp;lt;- as.character(lapply(strsplit(as.character(annotations$Protein.IDs), split=&quot;\\|&quot;),tail, n=1))
+
+# Remove &quot;_HUMAN&quot; part HNRH1_HUMAN
+annotations$Protein.IDs &amp;lt;- sub(&quot;_HUMAN&quot;,&quot;&quot;,annotations$Protein.IDs)
+
+# Select Columns; write complete column name. 
+annotations &amp;lt;- annotations[,c(&quot;Protein.IDs&quot;,&quot;Student.s.T.test.p.value....&quot;, &quot;Student.s.T.test.Difference...&quot;)]
+
+# Save the data 
+write.table(annotations, file = &quot;Volcano_plot_data.txt&quot;, col.names = TRUE, row.names = FALSE, quote = FALSE)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;5. Data visualization&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Volcano plot illustrates significantly differentially abundant proteins. The following plot is generated using GraphPad Prism.&lt;br /&gt;
+&lt;img src=&quot;/images/proteomics-volcano.png&quot; alt=&quot;volcano_plot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In addition to the above analytical considerations, good experimental design helps effectively identify true differences in the presence of variability from various sources and also avoids bias during data acquisition.&lt;/p&gt;
+
+&lt;p&gt;Further reading…&lt;br /&gt;
+&lt;a href=&quot;https://pharmazie.uni-greifswald.de/storages/uni-greifswald/fakultaet/mnf/pharma/biotechno/dokumente/MaxQuant_Infos_and_Tutorial_07.pdf&quot;&gt;MaxQuant – Information and Tutorial&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://bitbucket.org/wangdi2016/aws_maxquant_persues/src&quot;&gt;How to use Cloud for Proteomics Data Analysis&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://www.technologynetworks.com/proteomics/lists/data-dependent-vs-data-independent-proteomic-analysis-331712&quot;&gt;Data dependent vs Data independent proteomics&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://proteomicsresource.washington.edu/protocols06/&quot;&gt;RawMeat&lt;/a&gt; is a nice Thermo raw file diagnostic tool developed by the now defunct Vast Scientific &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.coxdocs.org/doku.php?id=maxquant:start&quot;&gt;MaxQuant&lt;/a&gt; is a quantitative proteomics software package designed for analyzing large mass-spectrometric data sets &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://github.com/cbielow/PTXQC&quot;&gt;PTXQC&lt;/a&gt;, an R-based quality control pipeline called Proteomics Quality Control &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.coxdocs.org/doku.php?id=perseus:start&quot;&gt;Perseus&lt;/a&gt; is software package for shotgun proteomics data analyses &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><category term="Proteomics" /><category term="LFQ" /><category term="label free quantitation" /><category term="iBAC" /><category term="MaxQuant" /><category term="Perseus" /><category term="Amazon Web Services" /><category term="Emory University" /><category term="Bioinformatics" /><summary type="html">Updated on September 13, 2021</summary></entry><entry><title type="html">Spatial gene expression data analysis on Cluster (10X Genomics, Space Ranger)</title><link href="https://wangdi2016.github.io/posts/2020/03/blog-spatial-gene-expression/" rel="alternate" type="text/html" title="Spatial gene expression data analysis on Cluster (10X Genomics, Space Ranger)" /><published>2020-03-06T00:00:00-05:00</published><updated>2020-03-06T00:00:00-05:00</updated><id>https://wangdi2016.github.io/posts/2020/03/blog-spatial-expression</id><content type="html" xml:base="https://wangdi2016.github.io/posts/2020/03/blog-spatial-gene-expression/">&lt;p&gt;Running &lt;a href=&quot;https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/what-is-space-ranger&quot;&gt;spaceranger&lt;/a&gt; as cluster mode that uses Sun Grid Engine (SGE) as queuing.&lt;/p&gt;
+
+&lt;p&gt;There are 2 steps to analyze Spatial RNA-seq data&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spaceranger mkfastq&lt;/code&gt; demultiplexes raw base call (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BCL&lt;/code&gt;) files generated by Illumina sequencers into FASTQ files.&lt;br /&gt;
+&lt;strong&gt;Step 2&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spaceranger count&lt;/code&gt; takes FASTQ files from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spaceranger mkfastq&lt;/code&gt; and performs alignment, filtering, barcode counting, and UMI counting.&lt;/p&gt;
+
+&lt;p&gt;Running pipelines on cluster requires the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1&lt;/strong&gt;. Load Space Ranger module (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spaceranger-1.0.0&lt;/code&gt;)&lt;sup id=&quot;fnref:1:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; or, download and uncompress spaceranger at your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME&lt;/code&gt; directory and add PATH in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2&lt;/strong&gt;. Update job config file (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spaceranger-1.0.0/external/martian/jobmanagers/config.json&lt;/code&gt;) for threads and memory. For example&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;threads_per_job&quot;: 8,&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;memGB_per_job&quot;: 64,&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3&lt;/strong&gt;. Update template file (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spaceranger-1.0.0/external/martian/jobmanagers/sge.template&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#!/bin/bash&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#$ -pe smp __MRO_THREADS__&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;##$ -l mem_free=__MRO_MEM_GB__G&lt;/code&gt; (comment this line if your cluster do not support it!)&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#$ -q b.q&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#$ -S /bin/bash&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#$ -m abe&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#$ -M &amp;lt;e-mail&amp;gt;&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd __MRO_JOB_WORKDIR__&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source ../spaceranger-1.0.0/sourceme.bash&lt;/code&gt; (update with complete path)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;For clusters whose job managers do not support memory requests, it is possible to request memory 
+in the form of cores via the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mempercore&lt;/code&gt; command-line option. This option scales up the number 
+of threads requested via the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__MRO_THREADS__&lt;/code&gt; variable according to how much memory a stage requires&lt;/em&gt;.&lt;br /&gt;
+Read more at &lt;a href=&quot;https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/advanced/cluster-mode&quot;&gt;Cluster Mode&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4&lt;/strong&gt;. Download spatial gene expression, image file and reference genome datasets from &lt;a href=&quot;https://www.10xgenomics.com/resources/datasets/&quot;&gt;10XGenomics&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5&lt;/strong&gt;. Create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sge.sh&lt;/code&gt; file&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TR=&quot;$HOME/refdata-cellranger-mm10-3.0.0&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Output files will appear in the out/ subdirectory within this pipeline output directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd $HOME/10xgenomics/out&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For pipeline output directory, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--id&lt;/code&gt; argument is used i.e Adult_Mouse_Brain.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FASTQS=&quot;$HOME/V1_Adult_Mouse_Brain_fastqs&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spaceranger count --disable-ui \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--id=Adult_Mouse_Brain \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--transcriptome=${TR} \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--fastqs=${FASTQS} \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--sample=V1_Adult_Mouse_Brain \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--image=$DATA_DIR/V1_Adult_Mouse_Brain_image.tif \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--slide=V19L01-041 \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--area=C1 \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--jobmode=sge \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mempercore=8 \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--jobinterval=5000 \&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--maxjobs=3&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6&lt;/strong&gt;. Execute a command in screen and, detach and reconnect&lt;/p&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;screen&lt;/code&gt; command to get in/out of the system while keeping the processes running.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;screen -S screen_name&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bash sge.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want to exit the terminal without killing the running process, simply press &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl+A+D&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To reconnect to the screen: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;screen -R screen_name&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7&lt;/strong&gt;. Monitor work progress through a web browser&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_log&lt;/code&gt; file present in output folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Adult_Mouse_Brain&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you see serving UI as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://cluster.university.edu:3600?auth=rlSdT_QLzQ9O7fxEo-INTj1nQManinD21RzTAzkDVJ8&lt;/code&gt;, then type the following from your laptop&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh -NT -L 9000:cluster.university.edu:3600 user@cluster.university.edu&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user@cluster.university.edu's password:&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then access the UI using the following URL in your web browser
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:9000/&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/what-is-space-ranger&quot;&gt;10XGenomics- Visium spatial RNA-seq&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt; &lt;a href=&quot;#fnref:1:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><category term="10XGenomics" /><category term="SPATIAL GENE EXPRESSION" /><category term="Visium Spatial Gene Expression Solution" /><category term="brightfield microscope image" /><category term="Space Ranger" /><category term="SGE Cluster" /><category term="Cluster Computing" /><summary type="html">Running spaceranger as cluster mode that uses Sun Grid Engine (SGE) as queuing.</summary></entry><entry><title type="html">ATAC-seq peak calling with MACS2</title><link href="https://wangdi2016.github.io/posts/2019/12/blog-post-atacseq/" rel="alternate" type="text/html" title="ATAC-seq peak calling with MACS2" /><published>2019-12-05T00:00:00-05:00</published><updated>2019-12-05T00:00:00-05:00</updated><id>https://wangdi2016.github.io/posts/2019/12/blog-atacseq</id><content type="html" xml:base="https://wangdi2016.github.io/posts/2019/12/blog-post-atacseq/">&lt;p&gt;ATAC-seq (Assay for Transposase Accessible Chromatin with high-throughput Sequencing) is a next-generation sequencing approach for the analysis of open chromatin regions to assess the genome-wise chromatin accessibility.&lt;/p&gt;
+
+&lt;p&gt;ATAC-seq achieves this by simultaneously fragmenting and tagging genomic DNA with sequencing adapters using the hyperactive Tn5 transposase enzyme &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Other global chromatin accessibility methods include FAIRE-seq and DNase-seq. This document aims to provide accessibility.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pre-processing of raw sequencing reads&lt;/strong&gt; – before mapping the raw reads to the genome, trim the adapter sequences. Poor read quality or sequencing
+errors often lead to low mapping rate.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mapping/alignment of sequencing reads to a reference genome&lt;/strong&gt; – use Burrows-Wheeler Aligner (BWA) for mapping of sequencing reads. The output alignment file will be saved as a sequence alignment/map (SAM) format or binary version of SAM called BAM. Mark the duplicate reads using Picard &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; and exclude reads mapping to mitochondrial DNA and other chromosomes from analysis together with low quality reads (MAPQ&amp;lt;10 and reads in Encode black list regions) using SAMtools &lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Filtering and shifting of the mapped reads&lt;/strong&gt; - shift the read position +4 and -5 bp in the BAM file before peak calling &lt;a href=&quot;https://yiweiniu.github.io/blog/2019/03/ATAC-seq-data-analysis-from-FASTQ-to-peaks/&quot;&gt;adjust the reads alignment&lt;/a&gt;. When the Tn5 transposase cuts open chromatin regions, it introduces two cuts that are separated by 9 bp. Therefore, ATAC-seq reads aligning to the positive and negative strands need to be adjusted by +4 bp and -5 bp respectively to represent the center of the transposase binding site. Picard CollectInsertSizeMetrics will be used to compute the fragment sizes on alignment shifted BAM files.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Identification and visualization of the ATAC-seq peaks&lt;/strong&gt; – use MACS2 for peak calling with the parameters nomodel or BAMPE &lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; and identify the differentially enriched peaks using the MACS2 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bdgdiff&lt;/code&gt; module. Individual peaks separated by &amp;lt;100 bp will be join together. For peak annotation and functional analysis use the R package ChIPpeakAnno or HOMER &lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;,&lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;. First, ATAC-seq peaks will be categorized into different groups based on the nearest RefSeq gene i.e. promoter, untranslated regions (UTRs), intron and exon. Second, peaks that are within 5 kb upstream and 3 kb downstream of the Transcription Start Site (TSS) are associated to the nearest genes. Finally, these genes are then analyzed for over-represented gene ontology (GO) terms and KEGG pathways using ChIPpeakAnno. Visualize all sequencing tracks using the Integrated Genomic Viewer (IGV) &lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;Scripts are available for HPC &lt;a href=&quot;https://bitbucket.org/wangdi2016/atac_seq-data-analysis/src/master/&quot;&gt;Cluster&lt;/a&gt;.&lt;br /&gt;
+For further reading: &lt;a href=&quot;https://yiweiniu.github.io/blog/2019/03/ATAC-seq-data-analysis-from-FASTQ-to-peaks/&quot;&gt;ATAC-seq-data-analysis-from-FASTQ-to-peaks&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://www.ncbi.nlm.nih.gov/pubmed/24097267&quot;&gt;ATAC-seq&lt;/a&gt; - Nature Methods. 2013; 10:1213–1218. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://broadinstitute.github.io/picard/&quot;&gt;PICARD&lt;/a&gt; &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.htslib.org&quot;&gt;HTSLIB&lt;/a&gt; &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://github.com/taoliu/MACS&quot;&gt;MACS&lt;/a&gt; &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:5&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-11-237&quot;&gt;ChIPpeakAnno&lt;/a&gt; &lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:6&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://homer.ucsd.edu/homer/ngs/&quot;&gt;HOMER&lt;/a&gt; &lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:7&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;http://software.broadinstitute.org/software/igv/home&quot;&gt;IGV&lt;/a&gt; &lt;a href=&quot;#fnref:7&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><category term="ATAC-seq (Assay for Transposase Accessible Chromatin with high-throughput Sequencing)" /><category term="MACS2" /><category term="BWA" /><category term="HOMER" /><summary type="html">ATAC-seq (Assay for Transposase Accessible Chromatin with high-throughput Sequencing) is a next-generation sequencing approach for the analysis of open chromatin regions to assess the genome-wise chromatin accessibility.</summary></entry><entry><title type="html">Single cell gene expression data analysis on Cluster (10X Genomics, Cell Ranger)</title><link href="https://wangdi2016.github.io/posts/2019/01/blog-post-sc-ranseq/" rel="alternate" type="text/html" title="Single cell gene expression data analysis on Cluster (10X Genomics, Cell Ranger)" /><published>2019-11-18T00:00:00-05:00</published><updated>2019-11-18T00:00:00-05:00</updated><id>https://wangdi2016.github.io/posts/2019/01/blog-sc-rnaseq</id><content type="html" xml:base="https://wangdi2016.github.io/posts/2019/01/blog-post-sc-ranseq/">&lt;p&gt;&lt;em&gt;Updated on May 03, 2021&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger&quot;&gt;Cell Ranger&lt;/a&gt; can be run in cluster mode, using job schedulers like Sun Grid Engine (or simply SGE) or Load Sharing Facility (or simply LSF) as queuing system allows highly parallelizable jobs.&lt;/p&gt;
+
+&lt;p&gt;There are 4 steps to analyze Chromium Single Cell data&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cellranger mkfastq&lt;/code&gt; demultiplexes raw base call (BCL) files generated by Illumina sequencers into FASTQ files.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 2&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cellranger count&lt;/code&gt; takes FASTQ files from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cellranger mkfastq&lt;/code&gt; and performs alignment, filtering, barcode counting, and unique molecular identifier (UMI) counting.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;When doing large studies involving multiple GEM wells, first run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cellranger count&lt;/code&gt; on FASTQ data from each of the GEM wells individually, and then pool the results using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cellranger aggr&lt;/code&gt;, as described &lt;a href=&quot;https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/aggregate&quot;&gt;here&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 3&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cellranger aggr&lt;/code&gt; aggregates outputs from multiple runs of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cellranger count&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 4&lt;/strong&gt;: Use R package &lt;a href=&quot;https://satijalab.org/seurat/&quot;&gt;Seurat&lt;/a&gt;&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; for downstream analysis.&lt;/p&gt;
+
+&lt;p&gt;Running pipelines on cluster requires the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1&lt;/strong&gt;. Download and uncompress &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cellranger-6.0.1&lt;/code&gt;&lt;sup id=&quot;fnref:1:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; at your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME&lt;/code&gt; directory and add PATH in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2&lt;/strong&gt;. Update job config file (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;external/martian/jobmanagers/config.json&lt;/code&gt;) for threads and memory. For example&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;threads_per_job&quot;: 4,&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;memGB_per_job&quot;: 32,&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3&lt;/strong&gt;. Update template file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sge.template&lt;/code&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;external/martian/jobmanagers/sge.template&lt;/code&gt;).&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#!/bin/bash
+#$ -N __MRO_JOB_NAME__
+#$ -V
+#$ -pe smp __MRO_THREADS__
+#$ -q b.q
+#$ -cwd
+#$ -l mem_free=__MRO_MEM_GB__G
+#$ -o __MRO_STDOUT__
+#$ -e __MRO_STDERR__
+#$ -m abe
+#$ -M &amp;lt;email&amp;gt;
+#$ -S /bin/bash
+ 
+cd __MRO_JOB_WORKDIR__
+source $HOME/cellranger-6.0.1/sourceme.bash 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For clusters whose job managers do not support memory requests, it is possible to request memory 
+in the form of cores via the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mempercore&lt;/code&gt; command-line option. This option scales up the number 
+of threads requested via the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__MRO_THREADS__&lt;/code&gt; variable according to how much memory a stage requires. 
+see more at &lt;a href=&quot;https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/advanced/cluster-mode&quot;&gt;Cluster Mode&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4&lt;/strong&gt;. Download single cell gene expression and reference genome datasets from &lt;a href=&quot;https://www.10xgenomics.com/resources/datasets/&quot;&gt;10XGenomics&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5&lt;/strong&gt;. Create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sge.sh&lt;/code&gt; file&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;for Single Cell 3′ gene expression&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Output files will appear in the out/ subdirectory within this pipeline output directory. For pipeline output directory, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--id&lt;/code&gt; argument is used i.e 10XGTX_v3.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#!/bin/bash
+
+cd $HOME/10xgenomics/out  
+
+FASTQS=&quot;$HOME/pbmc_10k_v3_fastqs&quot;`  
+TR=&quot;$HOME/refdata-cellranger-GRCh38-3.0.0
+
+cellranger count --disable-ui \`  
+  --id=10XGTX_v3 \`  
+  --transcriptome=${TR} \`  
+  --fastqs=${FASTQS} \`  
+  --sample=pbmc_10k_v3 \`  
+  --expect-cells=10000 \`  
+  --jobmode=sge \`  
+  --mempercore=8 \`  
+  --jobinterval=5000 \`  
+  --maxjobs=3`  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Execute a command in screen and, detach and reconnect:&lt;/p&gt;
+
+&lt;p&gt;Start a screen as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;screen -S some_name&lt;/code&gt;.&lt;br /&gt;
+Run the above script as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sh sge.sh&lt;/code&gt;&lt;br /&gt;
+To detach the screen session from the terminal use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;control&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; followed by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt;&lt;br /&gt;
+To reconnect to the screen: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;screen -R some_name&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;for Single Cell 5′ gene expression&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Use either &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--force-cells&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--expect-cells&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#!/bin/bash  
+
+cd $HOME/10xgenomics/out  
+
+TR=&quot;$HOME/refdata-cellranger-GRCh38-3.0.0
+FASTQS=&quot;$HOME/vdj_v1_hs_nsclc_5gex_fastqs&quot;
+
+cellranger count \  
+  --id=10XGTX_v5 \  
+  --fastqs=${FASTQS} \  
+  --transcriptome=${TR} \  
+  --sample=vdj_v1_hs_nsclc_5gex \  
+  --force-cells=7802 \  
+  --jobmode=sge \  
+  --mempercore=8 \  
+  --maxjobs=3 \  
+  --jobinterval=2000  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Execute a command in screen and, detach and reconnect:&lt;/p&gt;
+
+&lt;p&gt;Start a screen as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;screen -S some_name&lt;/code&gt;.&lt;br /&gt;
+Run the above script as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sh sge.sh&lt;/code&gt;&lt;br /&gt;
+To detach the screen session from the terminal use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;control&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; followed by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt;&lt;br /&gt;
+To reconnect to the screen: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;screen -R some_name&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;for Feature Barcode Analysis&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Tested on Single Cell 5′ gene expression and cell surface protein (Feature Barcoding/Antibody Capture Assay) data.&lt;/p&gt;
+
+&lt;p&gt;For more information, please visit the &lt;a href=&quot;https://support.10xgenomics.com/single-cell-gene-expression/overview/doc/getting-started-single-cell-gene-expression-with-feature-barcoding-technology&quot;&gt;Single Cell Gene Expression with Feature Barcoding&lt;/a&gt; page (Single Cell 3’) or the &lt;a href=&quot;https://support.10xgenomics.com/single-cell-vdj/overview/doc/getting-started-immune-profiling-feature-barcoding&quot;&gt;Single Cell Immune Profiling with Feature Barcoding&lt;/a&gt; page (Single Cell 5’).&lt;/p&gt;
+
+&lt;p&gt;Currently available Feature Barcode kits for Single Cell Gene Expression Feature Barcode Technology&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;10x Solution&lt;/th&gt;
+      &lt;th&gt;Gene Expression&lt;/th&gt;
+      &lt;th&gt;Cell Surface Protein&lt;/th&gt;
+      &lt;th&gt;CRISPR Screening&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Single Cell Gene Expression v2&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Single Cell Gene Expression v3&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Single Cell Gene Expression v3.1&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Single Cell Gene Expression v3.1 (Dual Index)&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Currently available Feature Barcoding kits for Single Cell Immune Profiling Feature Barcoding Technology&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;10x Solution&lt;/th&gt;
+      &lt;th&gt;TCR/Ig&lt;/th&gt;
+      &lt;th&gt;Gene Expression&lt;/th&gt;
+      &lt;th&gt;Cell Surface Marker&lt;/th&gt;
+      &lt;th&gt;TCR-Antigen Specificity&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Single Cell Immune Profiling&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Single Cell Immune Profiling with Feature Barcoding technology&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+      &lt;td&gt;✓&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;To enable Feature Barcode analysis, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cellranger count&lt;/code&gt; needs two inputs:&lt;/p&gt;
+
+&lt;p&gt;First you need a csv file declaring input library data sources; one for the normal single-cell gene expression reads, and one for the Feature Barcode reads (the FASTQ file directory and library type for each input dataset).&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LIBRARY=$HOME/vdj_v1_hs_pbmc2_5gex_protein_fastqs/vdj_v1_hs_pbmc2_5gex_protein_library.csv&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;fastqs&lt;/th&gt;
+      &lt;th&gt;sample&lt;/th&gt;
+      &lt;th&gt;library_type&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/path/to/antibody_fastqs&lt;/td&gt;
+      &lt;td&gt;vdj_v1_hs_pbmc2_antibody&lt;/td&gt;
+      &lt;td&gt;Antibody Capture&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;/path/to/gene_expression_fastqs&lt;/td&gt;
+      &lt;td&gt;vdj_v1_hs_pbmc2_5gex&lt;/td&gt;
+      &lt;td&gt;Gene Expression&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Second, you need Feature reference csv file, declaring feature-barcode constructs and associated barcodes. The pattern will be used to extract the Feature Barcode sequence from the read sequence.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FEATURE_REF=$HOME/vdj_v1_hs_pbmc2_5gex_protein_fastqs/vdj_v1_hs_pbmc2_5gex_protein_feature_ref.csv&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;read&lt;/th&gt;
+      &lt;th&gt;pattern&lt;/th&gt;
+      &lt;th&gt;sequence&lt;/th&gt;
+      &lt;th&gt;feature_type&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CD3&lt;/td&gt;
+      &lt;td&gt;CD3_TotalSeqC&lt;/td&gt;
+      &lt;td&gt;R2&lt;/td&gt;
+      &lt;td&gt;5PNNNNNNNNNN(BC)NNNNNNNNN&lt;/td&gt;
+      &lt;td&gt;CTCATTGTAACTCCT&lt;/td&gt;
+      &lt;td&gt;Antibody Capture&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CD19&lt;/td&gt;
+      &lt;td&gt;CD19_TotalSeqC&lt;/td&gt;
+      &lt;td&gt;R2&lt;/td&gt;
+      &lt;td&gt;5PNNNNNNNNNN(BC)NNNNNNNNN&lt;/td&gt;
+      &lt;td&gt;CTGGGCAATTACTCG&lt;/td&gt;
+      &lt;td&gt;Antibody Capture&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CD45RA&lt;/td&gt;
+      &lt;td&gt;CD45RA_TotalSeqC&lt;/td&gt;
+      &lt;td&gt;R2&lt;/td&gt;
+      &lt;td&gt;5PNNNNNNNNNN(BC)NNNNNNNNN&lt;/td&gt;
+      &lt;td&gt;TCAATCCTTCCGCTT&lt;/td&gt;
+      &lt;td&gt;Antibody Capture&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;Feature and Library Types&lt;/em&gt; - When inputting Feature Barcode data to Cell Ranger via the Libraries CSV File, you must declare the library_type of each library. Examples include &lt;em&gt;Antibody Capture&lt;/em&gt;, &lt;em&gt;CRISPR Guide Capture&lt;/em&gt; or &lt;em&gt;Custom&lt;/em&gt;. If your assay scheme creates a library containing multiple library_types, for example if you’re using CRISPR Guide Capture and Antibody Capture features, you will need to run Cell Ranger multiple times, passing different library_type values in the Libraries CSV File. If Targeted Gene Expression data is analyzed in conjunction with CRISPR-based Feature Barcode data, there are additional requirements imposed for the Feature Reference CSV file.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.biolegend.com/en-us/totalseq&quot;&gt;TotalSeq™ Reagents for Single-Cell Proteogenomics&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_protein_v3/pbmc_1k_protein_v3_feature_ref.csv&quot;&gt;TotalSeq™-B&lt;/a&gt; is a line of antibody-oligonucleotide conjugates supplied by BioLegend that are compatible with the Single Cell 3’ v3 assay.&lt;br /&gt;
+&lt;a href=&quot;https://support.10xgenomics.com/csv/vdj_v1_hs_pbmc2_5gex_protein_feature_ref.csv&quot;&gt;TotalSeq™-C&lt;/a&gt; is a line of antibody-oligonucleotide conjugates supplied by BioLegend that are compatible with the Single Cell 5’ assay.&lt;br /&gt;
+&lt;a href=&quot;https://support.10xgenomics.com/csv/TotalSeqA_example_feature_ref.csv&quot;&gt;TotalSeq™-A&lt;/a&gt; is a line of antibody-oligonucleotide conjugates supplied by BioLegend that are compatible with the Single Cell 3’ v2 and Single Cell 3’ v3 kits. Although TotalSeq™-A can be used with the CITE-Seq assay, CITE-Seq is not a 10x supported assay.&lt;/p&gt;
+
+&lt;p&gt;CITE-seq (Cellular Indexing of Transcriptomes and Epitopes by Sequencing) allows simultaneous analysis of transcriptome and cell surface protein information at the level of a single cell.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“The pipeline first extracts and corrects the cell barcode and UMI from the feature library using the same methods as gene expression read processing. It then matches the Feature Barcode read against the list of features declared in the above &lt;a href=&quot;https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/feature-bc-analysis#feature-ref&quot;&gt;Feature Barcode Reference&lt;/a&gt;. The counts for each feature are available in the feature-barcode matrix output files.”&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#!/bin/bash  
+
+cd $HOME/10xgenomics/out
+
+TR=&quot;$HOME/refdata-cellranger-GRCh38-3.0.0
+
+LIBRARY=$HOME/vdj_v1_hs_pbmc2_5gex_protein_fastqs/vdj_v1_hs_pbmc2_5gex_protein_library.csv  
+FEATURE_REF=$HOME/vdj_v1_hs_pbmc2_5gex_protein_fastqs/vdj_v1_hs_pbmc2_5gex_protein_feature_ref.csv  
+
+cellranger count \  
+ --libraries=${LIBRARY} \  
+ --feature-ref=${FEATURE_REF} \  
+ --id=PBMC_5GEX \  
+ --transcriptome=${TR} \  
+ --expect-cells=9000 \  
+ --jobmode=sge \  
+ --mempercore=8 \  
+ --maxjobs=3 \  
+ --jobinterval=5000  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Execute a command in screen and, detach and reconnect:&lt;/p&gt;
+
+&lt;p&gt;Start a screen as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;screen -S some_name&lt;/code&gt;.&lt;br /&gt;
+Run the above script as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sh sge.sh&lt;/code&gt;.&lt;br /&gt;
+To detach the screen session from the terminal use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;control&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; followed by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt;&lt;br /&gt;
+To reconnect to the screen: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;screen -R some_name&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6&lt;/strong&gt;. Monitor work progress through a web browser&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_log&lt;/code&gt; file present in output folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PBMC_5GEX&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you see serving UI as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://cluster.university.edu:3600?auth=rlSdT_QLzQ9O7fxEo-INTj1nQManinD21RzTAzkDVJ8&lt;/code&gt;, then type the following from your laptop&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh -NT -L 9000:cluster.university.edu:3600 user@cluster.university.edu&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user@cluster.university.edu's password:&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then access the UI using the following URL in your web browser
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:9000/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7&lt;/strong&gt;. Single Cell Integration in Seurat&lt;/p&gt;
+
+&lt;p&gt;Seurat is an R package designed for QC, analysis, and exploration of single cell RNA-seq data. Seurat aims to enable users to identify and interpret sources of heterogeneity from single cell transcriptomic measurements, and to integrate diverse types of single cell data. Seurat starts by reading cellranger data (barcodes.tsv.gz, features.tsv.gz and matrix.mtx.gz)&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pbmc.data &amp;lt;- Read10X(data.dir = &quot;~/PBMC_5GEX/outs/filtered_feature_bc_matrix/&quot;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://support.10xgenomics.com/single-cell-gene-expression/software/overview/welcome&quot;&gt;10XGenomics&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt; &lt;a href=&quot;#fnref:1:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://satijalab.org/seurat/&quot;&gt;Seurat&lt;/a&gt; &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;Stoeckius, M. et al. Simultaneous epitope and transcriptome measurement in single cells. Nat. Methods 14, 865–868 (2017). &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><category term="10XGenomics" /><category term="Chromium Single Cell Gene Expression" /><category term="Single cell RNA-sequencing (scRNA-seq)" /><category term="Single Cell" /><category term="Cell Ranger" /><category term="Seurat" /><category term="Cluster Computing" /><category term="Feature Barcoding" /><summary type="html">Updated on May 03, 2021</summary></entry><entry><title type="html">Taxonomic and diversity profiling of the microbiome - 16S rRNA gene amplicon sequence data</title><link href="https://wangdi2016.github.io/posts/2019/01/blog-post-qiime2/" rel="alternate" type="text/html" title="Taxonomic and diversity profiling of the microbiome - 16S rRNA gene amplicon sequence data" /><published>2019-01-01T00:00:00-05:00</published><updated>2019-01-01T00:00:00-05:00</updated><id>https://wangdi2016.github.io/posts/2019/01/blog-qiime2</id><content type="html" xml:base="https://wangdi2016.github.io/posts/2019/01/blog-post-qiime2/">&lt;p&gt;The 16S ribosomal RNA (rRNA) gene of Bacteria codes for the RNA component of the 30S subunit. Different bacterial species have one to multiple copies of the 16S rRNA gene, and each with 9 hypervariable regions, V1-V9. High-throughput sequencing of 16S rRNA gene (a “marker gene”) amplicons has become a widely used method to study bacterial phylogeny and species classification.&lt;/p&gt;
+
+&lt;p&gt;Quantitative Insights Into Microbial Ecology “QIIME” 2 (release 2018.11)&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; is a widely used package to identity abundance of microbes using 16s rRNA. Briefly, feature table containing counts of each unique sequence in the samples will be constructed using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;qiime dada2 denoise-paired&lt;/code&gt; method. A feature is essentially any unit of observation, e.g., an OTU (Operational Taxonomic Unit), a sequence variant, a gene or a metabolite. In QIIME2 (currently), most features will be OTUs or sequence variants (alternatively, for OTUs, use QIIME2 plugin &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;q2-vsearch&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Data produced by QIIME 2 exist as QIIME 2 artifacts. A QIIME 2 artifact typically has the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.qza&lt;/code&gt; file extension when output data stored in a file. Visualizations are another type of data (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.qzv&lt;/code&gt; file extension) generated by QIIME 2, which can be viewed using a web interface &lt;a href=&quot;https://view.qiime2.org&quot;&gt;https://view.qiime2.org&lt;/a&gt; (at Firefox web browser) without requiring a QIIME installation. Since QIIME 2 works with artifacts instead of data files (e.g. FASTA files), we must create a QIIME 2 artifact by importing our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fastq.gz&lt;/code&gt; data files.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Scripts are available for AWS &lt;a href=&quot;https://bitbucket.org/wangdi2016/aws_qiime2/src&quot;&gt;Cloud&lt;/a&gt; and HPC &lt;a href=&quot;https://bitbucket.org/wangdi2016/cluster_qiime2/src&quot;&gt;Cluster&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://qiime2.org&quot;&gt;https://qiime2.org&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><category term="microbiome" /><category term="computing" /><category term="qiime2" /><category term="16s rRNA amplicon" /><category term="DADA2" /><category term="OTU" /><summary type="html">The 16S ribosomal RNA (rRNA) gene of Bacteria codes for the RNA component of the 30S subunit. Different bacterial species have one to multiple copies of the 16S rRNA gene, and each with 9 hypervariable regions, V1-V9. High-throughput sequencing of 16S rRNA gene (a “marker gene”) amplicons has become a widely used method to study bacterial phylogeny and species classification.</summary></entry><entry><title type="html">Taxonomic and functional profiling of the microbiome - whole genome shotgun metagenomics</title><link href="https://wangdi2016.github.io/posts/2018/07/blog-post-metagenomics/" rel="alternate" type="text/html" title="Taxonomic and functional profiling of the microbiome - whole genome shotgun metagenomics" /><published>2018-07-27T00:00:00-04:00</published><updated>2018-07-27T00:00:00-04:00</updated><id>https://wangdi2016.github.io/posts/2018/07/blog-metagenomics</id><content type="html" xml:base="https://wangdi2016.github.io/posts/2018/07/blog-post-metagenomics/">&lt;p&gt;This workflow consists of taxonomic and functional profiling of shotgun metagenomics sequencing (MGS) reads using MetaPhlAn2 and HUMAnN2, respectively. To perform taxonomic (phyla, genera or species level) profiling of the MGS data, the MetaPhlAn2 pipeline was run on a high performance multicore cluster computing environment.&lt;/p&gt;
+
+&lt;p&gt;MetaPhlAn2 provides microbial (bacterial, archaeal, viral, and eukaryotic) taxonomic profiling allowing the quantification of individual species across metagenomic samples. MetaPhlAn2 relies on ~1M unique clade-specific marker genes identified from ~17,000 reference genomes. Microbial reads, aligned by MetaPhlAn2, belonging to clades with no sequenced genomes available are reported as an “unclassified” subclade of the closest ancestor with available sequence data.
+HUMAnN2 utilizes the MetaCyc database as well as the UniRef gene family catalog to characterize the microbial pathways present in samples. HUMAnN2 relies on programs such as BowTie (for accelerated nucleotide-level searches) and Diamond (for accelerated translated searches) to compute the abundance of gene families and metabolic pathways present. HUMAnN2 generates three outputs: 1) gene families based on UniRef proteins and their abundances reported in reads per kilobase, 2) MetaCyc pathways and their coverage, and 3) MetaCyc pathways and their abundances reported in reads per kilobase.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Scripts are available at &lt;a href=&quot;https://bitbucket.org/wangdi2016/shotgun_metagenomics/src&quot;&gt;shotgun_metagenomics&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name>Scientist, Bioinformatics</name><email>wang.difei@yahoo.com</email></author><category term="metagenomics" /><category term="MetaPhlAn2" /><category term="HUMAnN2" /><category term="taxonomic profiling" /><category term="functional profiling" /><category term="shotgun metagenomics sequencing" /><summary type="html">This workflow consists of taxonomic and functional profiling of shotgun metagenomics sequencing (MGS) reads using MetaPhlAn2 and HUMAnN2, respectively. To perform taxonomic (phyla, genera or species level) profiling of the MGS data, the MetaPhlAn2 pipeline was run on a high performance multicore cluster computing environment.</summary></entry></feed>
