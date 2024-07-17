@@ -20,7 +20,7 @@ Work experience
 * 4/2022-present: Bioinformatics Manager
   * Leidos Biomedical Research, CGR, BB/DCEG/NCI/NIH
 
-* 11/2016-4/2022: Scientist, Bioinformatics Analyst III
+* 11/2016-4/2022: Bioinformatics Analyst III
   * Leidos Biomedical Research, CGR, BB/DCEG/NCI/NIH
 
 * 05/2012-10/2016: Research Assistant Professor

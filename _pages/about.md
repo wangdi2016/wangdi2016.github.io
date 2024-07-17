@@ -10,22 +10,14 @@ redirect_from:
 {% comment %} {% endcomment %}
 
 
-<p>As a Senior Bioinformatics Scientist and Bioinformatics manager, lead the Research Analysis Support Group of the Cancer Genomics Research Laboratory (CGR), operated by Leidos Biomedical Research, Inc. for the Division of Cancer Epidemiology and Genetics (DCEG), National Cancer Institute (NCI) (<a href="https://dceg2.cancer.gov/cgi-bin/Personnel.pl?1=ALL" target="_blank">DCEG Staff</a>). I obtained my Ph.D. in Computational Chemistry from the Hong Kong University of Science and Technology. My research is focused on analyzing genomic data (DNASeq and RNASeq) to gain knowledge in preventing human cancers and improving human health. My recent work focuses on analyses of whole transcriptomics, gene fusion, tumor-infiltrating immune cells, mutational signature, GWAS and polygenic risk score, spatial genomics, single-cell sequencing, and PacBio long reads sequencing.</p>
+<p>As a Senior Bioinformatics Scientist and Bioinformatics manager, lead the Research Analysis Support Group of the Cancer Genomics Research Laboratory (CGR), operated by Leidos Biomedical Research, Inc. for the Division of Cancer Epidemiology and Genetics (<a href="https://dceg2.cancer.gov/cgi-bin/Personnel.pl?1=ALL" target="_blank">DCEG</a>), National Cancer Institute (NCI). I obtained my Ph.D. in Computational Chemistry from the Hong Kong University of Science and Technology. My research is focused on analyzing genomic data (DNASeq and RNASeq) to gain knowledge in preventing human cancers and improving human health. My recent work focuses on analyses of whole transcriptomics, gene fusion, tumor-infiltrating immune cells, mutational signature, GWAS and polygenic risk score, spatial genomics, single-cell sequencing, and PacBio long reads sequencing.</p>
 
 <p><b>NEWS</b></p>
 
 <p>2024</p>
 <ul>
-<li><em>An ancient ecospecies of Helicobacter pylori found in Indigenous populations and animal adapted lineages</em> published in Nature.</li>
-<li><em>Gene content, phage cycle regulation model and prophage inactivation disclosed by prophage genomics in the Helicobacter pylori Genome Project</em> published in Gut Microbes.</li>
-<li><em>Genomic profiles and clinical presentation of chordoma</em> published in Acta Neuropathologica Communications.</li>
-<li><em>GrafGen: Distance-Based Inference of Population Ancestry for Helicobacter pylori Genomes</em> published in Bioconductor.</li>
+<li><em>An ancient ecospecies of Helicobacter pylori found in Indigenous populations and animal adapted lineages</em> Accpeted in Nature.</li>
 <li><em>Pan-cancer mutational signature analysis of 111,711 targeted sequenced tumors using SATS</em> Under Review in Nature Methods.</li>
-</ul>
-
-<p>2023</p>
-<ul>
-<li><em>DNA methylation age in paired tumor and adjacent normal breast tissue in Chinese women with breast cancer</em> published in Clinical Epigenetics.</li>
 </ul>
 
 {% comment %}
