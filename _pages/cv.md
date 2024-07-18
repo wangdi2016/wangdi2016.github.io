@@ -24,27 +24,26 @@ Work experience
   * Leidos Biomedical Research, CGR & BB/DCEG/NCI/NIH
 
 * 05/2012-10/2016: Research Assistant Professor
-  * Georgetown University Medical Center, DC
+  * [`ICBI`](https://icbi.georgetown.edu/wang/), Georgetown University Medical Center, DC
   * Genomic data analysis
 
 * 06/2006-04/2012: Research Fellow
   * LCB/CCR/NCI/NIH
-  * DNA and protein structural analysis
-  * Supervisor: [`Victor Zhurkin`](http://nci.nih.gov/) Ph.D
+  * DNA, protein structural and sequence analyses
+  * Supervisor: [`Victor Zhurkin`](https://ccr.cancer.gov/staff-directory/victor-b-zhurkin/) Ph.D
 
 * 11/2000-05/2006: Postdoctoral Associate
   * University of Notre Dame, Notre Dame, IN
-  * Duties included: Microarray data analysis
-  * Supervisor: [`Olaf Wiest`](https://www.nd.edu/) Ph.D
+  * Protein sequence & structural analyses
+  * Docking, molecular dynamics simulaion, force field development
+  * Supervisor: [`Olaf Wiest`](https://chemistry.nd.edu/people/olaf-wiest/) Ph.D
   
 Skills
 ======
 * NGS, Genomics, Mutation, Long reads sequencing, single cell RNA-Seq
-* R for Statistical Computing
-* Linux shell
-* Python
+* R, Python, Fortran, C/C++
+* Linux bash shell
 * Cluster and Cloud computing
-* Fortran
 
 Publications
 ======
@@ -67,4 +66,3 @@ Teaching
 Conference
 ======
 * 2023 - EHMSG - 36th International Workshop on Helicobacter and Microbiota in Inflammation & Cancer, September 7-9, 2023 Antwerp, Belgium
-
