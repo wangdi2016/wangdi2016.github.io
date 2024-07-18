@@ -80,9 +80,9 @@ social:
 
 # Site Author
 author:
-  name             : ""
+  name             : "From Data to Knowledge"
   avatar           : "profile.png"
-  bio              : "From Data to Knowledge"
+  bio              : ""
   location         : "Rockville, MD"
   employer         :
   pubmed           : "https://pubmed.ncbi.nlm.nih.gov/?term=Wang+Difei&sort=pubdate"
