@@ -24,7 +24,7 @@ Work experience
   * Leidos Biomedical Research, CGR & BB/DCEG/NCI/NIH
 
 * 05/2012-10/2016: Research Assistant Professor
-  * [`Innovation Center for Biomedical Informatics`],(https://icbi.georgetown.edu/wang/) Georgetown University Medical Center, DC
+  * [`Innovation Center for Biomedical Informatics`](https://icbi.georgetown.edu/wang/) Georgetown University Medical Center, DC
   * Genomic data analysis
 
 * 06/2006-04/2012: Research Fellow
