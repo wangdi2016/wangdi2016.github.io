@@ -7,8 +7,7 @@ venue: "Georgetown University"
 date: 2014-01-01
 location: "Washington DC, USA"
 ---
-
 Course directors: Drs. Sona Vasudevan and Ayesha Shajahan-Haq
 
 Guest lecture: Drug Discovery in the Post-Genomic Era  
-	* [(PDF)](http://wangdi2016.github.io/files/x.pdf)
+	* [(PDF)](http://wangdi2016.github.io/files/z.pdf) </br>
