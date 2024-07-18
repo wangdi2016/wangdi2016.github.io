@@ -37,10 +37,6 @@ GrafGen: Distance-Based Inference of Population Ancestry for Helicobacter pylori
 Pan-cancer mutational signature analysis of 111,711 targeted sequenced tumors using SATS.<br><em>(Under review)</em></li>
 </ul>  
 
-{% comment%}
-{% endcomment %}  
-Previously, I worked at Georgetown University Medican Center, LCB/NCI and University of Notre Dame (http://www.nd.edu).
-
 <!-- Google tag (gtag.js)
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RWM39QLMPF"></script>
 <script>
