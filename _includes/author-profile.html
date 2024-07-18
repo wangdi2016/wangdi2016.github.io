@@ -16,9 +16,10 @@
 
   <div class="author__content">
     <p class="author__name">{{ author.name }}</p>
-    {% if author.bio %}<h6 class="author__bio">{{ author.bio }}</h6>{% endif %}
+    <br>
+    {% if author.bio %}<h4 class="author__bio">{{ author.bio }}</h4>{% endif %}
   </div>
-  <br><br>
+  <br>
   <div class="author__urls-wrapper">
     <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
