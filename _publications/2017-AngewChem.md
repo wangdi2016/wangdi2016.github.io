@@ -1,6 +1,3 @@
-Chen, W.; Xu, S.; Day, J.J.; Wang, D.; and Xian, M. A General Strategy for Development of Near-Infrared Fluorescent Probes for Bioimaging Angew. Chem. 2017, 129, 16838-16842.
-
-
 ---
 title: "A General Strategy for Development of Near-Infrared Fluorescent Probes for Bioimaging."
 collection: publications
