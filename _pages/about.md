@@ -31,8 +31,6 @@ Gene content, phage cycle regulation model and prophage inactivation disclosed b
 Genomic profiles and clinical presentation of chordoma.<br><em>(Accepted)</em></li>
 <li><i style="color:DodgerBlue;">Bioconductor</i><br>
 GrafGen: Distance-Based Inference of Population Ancestry for Helicobacter pylori Genomes.<br><em>(Published)</em></li>
-<li><i style="color:DodgerBlue;">Nature Methods</i><br>
-Pan-cancer mutational signature analysis of 111,711 targeted sequenced tumors using SATS.<br><em>(Under review)</em></li>
 </ul>  
 
 <!-- Google tag (gtag.js)
