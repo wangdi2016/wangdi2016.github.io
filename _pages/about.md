@@ -17,7 +17,6 @@ redirect_from:
 
 <ul>
 <li><em>An ancient ecospecies of Helicobacter pylori found in Indigenous populations and animal adapted lineages</em> Accepted in Nature.</li>
-<li><em>Pan-cancer mutational signature analysis of 111,711 targeted sequenced tumors using SATS</em> Under Review in Nature Methods.</li>
 </ul>
 
 {% comment %}
