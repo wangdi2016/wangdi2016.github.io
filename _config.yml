@@ -9,7 +9,7 @@
 locale                   : "en-US"
 title                    : "Difei Wang Ph.D"
 title_separator          : "-"
-name                     : &name "wangdi2016"
+name                     : &name "Difei Wang"
 description              : &description ""
 url                      : https://wangdi2016.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -80,7 +80,7 @@ social:
 
 # Site Author
 author:
-  name             : "Difei Wang"
+  name             : ""
   avatar           : "profile.png"
   bio              : "From Data to Knowledge"
   location         : "Rockville, MD"
