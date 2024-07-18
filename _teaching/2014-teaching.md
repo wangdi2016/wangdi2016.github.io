@@ -10,4 +10,4 @@ location: "Washington DC, USA"
 Course directors: Drs. Sona Vasudevan and Ayesha Shajahan-Haq
 
 Guest lecture: Drug Discovery in the Post-Genomic Era  
-	* [(PDF)](http://wangdi2016.github.io/files/z.pdf) </br>
+	* [(PDF)](http://wangdi2016.github.io/files/z.pdf)
