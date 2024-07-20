@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: ""
-permalink: /cv/
+permalink: /cv/cv
 author_profile: true
 redirect_from:
   - /resume
@@ -17,22 +17,22 @@ Education
 
 Work experience
 ======
-* 4/2022-present: Bioinformatics Manager
+* Bioinformatics Manager, 4/2022-present
   * Leidos Biomedical Research, CGR/FNLCR/LBR & DCEG/NCI/NIH
 
-* 11/2016-04/2022: Bioinformatics Analyst III
+* Bioinformatics Analyst III, 11/2016-04/2022
   * Leidos Biomedical Research, CGR/FNLCR/LBR & BB/DCEG/NCI/NIH
 
-* 05/2012-10/2016: Research Assistant Professor
+* Research Assistant Professor, 05/2012-10/2016
   * [`Innovation Center for Biomedical Informatics`](https://icbi.georgetown.edu/wang/) Georgetown University Medical Center, DC
   * Genomic data analysis
 
-* 06/2006-04/2012: Research Fellow
+* Research Fellow, 06/2006-04/2012
   * LCB/CCR/NCI/NIH
   * DNA, protein structural and sequence analyses
   * Supervisor: [`Victor Zhurkin`](https://ccr.cancer.gov/staff-directory/victor-b-zhurkin/) Ph.D
 
-* 11/2000-05/2006: Postdoctoral Associate
+* Postdoctoral Associate, 11/2000-05/2006
   * University of Notre Dame, Notre Dame, IN
   * Protein sequence & structural analyses
   * Docking, molecular dynamics simulaion, force field development
