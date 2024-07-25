@@ -24,7 +24,7 @@ redirect_from:
 <b>2024  Publications</b>
 <ul>
 <li><i style="color:DodgerBlue;">Nature</i><br>  
-An ancient ecospecies of Helicobacter pylori found in Indigenous populations and animal adapted lineages.<br><em>(Accepted)</em> </li>
+An ancient ecospecies of Helicobacter pylori.<br><em>(Accepted)</em> </li>
 <li><i style="color:DodgerBlue;">Gut Microbes</i><br>
 Gene content, phage cycle regulation model and prophage inactivation disclosed by prophage genomics in the Helicobacter pylori Genome Project.<br><em>(Accepted)</em></li>
 <li><i style="color:DodgerBlue;">Acta Neuropathologica Communications</i><br>
