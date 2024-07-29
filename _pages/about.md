@@ -16,7 +16,7 @@ redirect_from:
 <p><b>News</b></p>
 
 <ul>
-<li><em>An ancient ecospecies of Helicobacter pylori found in Indigenous populations and animal adapted lineages</em> Accepted in Nature.</li>
+<li><em>An ancient ecospecies of Helicobacter pylori</em> Accepted in Nature.</li>
 </ul>
 
 {% comment %}
