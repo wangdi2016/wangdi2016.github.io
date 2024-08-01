@@ -8,7 +8,7 @@ tags:
   - Helicobacter pylori Genome Project
   - Genome
   - Population
-venue: 'Nat Comm'
+venue: 'Nature Communications'
 paperurl: 'https://pubmed.ncbi.nlm.nih.gov/38081806/'  
 citation: 'Thorell, K; Munoz-Ramírez, Z.; <i style="color:DodgerBlue;">Wang, D.</i>; Sandoval-Motta, S.; Agostini, R.B.; Ghirotto, S.; Torres, R. HpGP research network, Falush, D.; Camargo, M.C.; and Rabkin C.S. The Helicobacter pylori Genome Project: insights into H. pylori population structure from analysis of a worldwide collection of complete genomes. <i>Nat Comm</i> 14, 8144 (2023).'  
 ---  
